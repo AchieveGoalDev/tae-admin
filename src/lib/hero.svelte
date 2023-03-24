@@ -115,7 +115,7 @@
             <HeroText cycleIndex={index} {scrollText} />
           </HeroTextScroller>
           <div class="mx-auto">
-            <CTA text="今すぐ受講" href="/apply" />
+            <CTA text="今すぐ受講" href="/" />
           </div>
         </div>
       </div>

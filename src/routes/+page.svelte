@@ -65,8 +65,8 @@
     <div
       class="flex flex-col mx-5 sm:mx-0 sm:flex-row place-content-around align-items-center"
     >
-      <BlueCTA href="/university/about" text="詳細はこちら" />
-      <RedCTA href="/university/apply" text="今すぐお問い合わせ" />
+      <BlueCTA href="/about" text="詳細はこちら" />
+      <RedCTA href="/apply" text="今すぐお問い合わせ" />
     </div>
   </SectionWrapper>
   <MediaWrapper description="東洋AchieveEnglishの紹介動画">
