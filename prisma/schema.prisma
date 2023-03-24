@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  department String
+  title String
+  email String @unique 
+  passwordHash String
+  userAuthToken String @unique
+  role Roles @relation(fields: [roleId], references: [id])  
+  roleId String
+  articles Article[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Roles{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  role String
+  user User[]
+}
+
+model Article{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String @unique
+  tags String[]
+  content String
+  visible Boolean
+  author User @relation(fields: [authorId], references:[id])
+  authorId String
+  images Image[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  publishAt DateTime @default(now())
+
+  showCreated Boolean
+  showUpdated Boolean
+}
+
+model Image{
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  awsBucketUrl String @unique
+  article Article @relation(fields: [articleId], references:[id])
+  articleId String
+}
+
+model Plan{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  startDate DateTime
+  endDate DateTime
+  tasks String[] 
+}
+

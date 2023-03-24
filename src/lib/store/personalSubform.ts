@@ -1,0 +1,24 @@
+import { writable } from "svelte/store";
+
+export const 学籍番号 = writable("");
+export const 氏名 = writable("");
+export const フリガナ = writable("");
+export const 英字名First = writable("");
+export const 英字名Last = writable("");
+export const 学年 = writable("");
+export const 学部 = writable("");
+export const 学科 = writable("");
+export const 英検 = writable("");
+export const TOEFL = writable("");
+export const IELTS = writable("");
+export const きっかけ = writable("");
+export const 大学メール = writable("");
+export const 個人メール = writable("");
+export const 電話番号 = writable("");
+export const その他 = writable("");
+export const 備考 = writable("");
+export const 住所 = writable("");
+export const 性別 = writable("");
+export const 種別 = writable("");
+export const 試験 = writable(false);
+export const TOEIC = writable("");

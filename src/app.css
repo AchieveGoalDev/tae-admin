@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.heading-outline-white {
+  -webkit-text-stroke: 1px #fff;
+}
+
+.thin-heading-outline-white {
+  -webkit-text-stroke: 0.5px #fff;
+}
+
+.heading-outline-red {
+  -webkit-text-stroke: 3px #be123c;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.bg-logo {
+  background-image: url("https://dh63x6re274g0.cloudfront.net/images/TAELogo.svg");
+}
+
+.bg-logo-mobile {
+  background-image: url("https://dh63x6re274g0.cloudfront.net/images/TAELogo.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+.mobile-hero-container {
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.mobile-hero-carousel {
+  grid-row: 1/8;
+}
+
+.mobile-hero-text {
+  grid-row: 7/12;
+}
+
+.mobile-hero-carousel,
+.mobile-hero-text {
+  grid-column: 1/2;
+}
