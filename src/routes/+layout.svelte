@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../../app.css";
+  import "../app.css";
   import Navbar from "$lib/navbar/Navbar.svelte";
   import Hamburger from "$lib/navbar/mobile/Hamburger.svelte";
   import Social from "$lib/social-components/social.svelte";
