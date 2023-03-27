@@ -8,16 +8,26 @@
     iconAlt: string;
   };
 
-  export let color: string;
-  export let lightColor: string;
+  import { onMount } from "svelte";
 
-  let classText: string = `block py-4 px-4 border-b-2 flex flex-row transition transition-all active:${lightColor} `;
+  onMount(() => {
+    if (linkData.href === $page.url.pathname) {
+      bg = "bg-primary-light";
+    } else {
+      bg = "bg-primary-medium";
+    }
+  });
+
+  let bg: string = "bg-primary-medium";
+  let classText: string = `block py-4 px-4 border-b-2 flex flex-row transition transition-all focus:bg-primary-light hover:bg-primary-light active:bg-primary-light ${bg}`;
 
   $: if (linkData.href === $page.url.pathname) {
-    classText += lightColor;
+    bg = "bg-primary-light";
   } else {
-    classText += color;
+    bg = "bg-primary-medium";
   }
+
+  console.log(linkData.href === $page.url.pathname);
 </script>
 
 <a href={linkData.href} class={classText}

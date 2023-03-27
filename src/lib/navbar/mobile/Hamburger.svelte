@@ -28,7 +28,7 @@
 </script>
 
 <nav
-  class={`${bgColor} min-h-[60px] w-full justify-content-center content-center shadow-md`}
+  class={"bg-primary-dark min-h-[60px] w-full justify-content-center content-center shadow-md"}
 >
   <div class="flex flex-row flex-auto w-full place-content-between p-2">
     <div class="flex flex-row">
@@ -83,7 +83,7 @@
       class="text-white text-center font-bold"
     >
       {#each data.links as link}
-        <HamburgerLink linkData={link} color={highlightColor} {lightColor} />
+        <HamburgerLink linkData={link} />
       {/each}
       <div
         class="text-right flex flex-col items-center py-2 sm:py-0 sm:flex-row sm:h-[60px] content-center place-content-around"

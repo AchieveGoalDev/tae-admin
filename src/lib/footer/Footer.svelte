@@ -3,21 +3,9 @@
   import LogoWrapper from "$lib/media-wrappers/LogoWrapper.svelte";
 
   let s3 = PUBLIC_IMAGE_BUCKET_URL;
-
-  export let themeColor: string;
-
-  let bgColor = "black";
-
-  if (themeColor === "blue") {
-    bgColor = "bg-blue-900";
-  }
-
-  if (themeColor === "red") {
-    bgColor = "bg-rose-700";
-  }
 </script>
 
-<div class={`${bgColor} min-h-[300px]`}>
+<div class={`bg-primary-dark min-h-[300px]`}>
   <div
     class="flex flex-col md:flex-row px-3 mt-3 w-full place-content-around text-white md:items-center md:py-5"
   >
@@ -128,4 +116,3 @@
     </div>
   </div>
 </div>
-

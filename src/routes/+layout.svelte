@@ -8,6 +8,7 @@
 
   import { mainNav } from "$lib/navbar/LinkDefs";
   import PageTransition from "$lib/transitions/PageTransition.svelte";
+  import GoogleAnalytics from "$lib/telemetry/GoogleAnalytics.svelte";
 
   let width: number;
   let scroll: number;
@@ -24,6 +25,7 @@
 </script>
 
 <svelte:window bind:innerWidth={width} bind:scrollY={scroll} />
+<GoogleAnalytics tag="G-P0LJSSVW5S'" />
 
 {#if width > 900}
   <Navbar data={mainNav} />
@@ -41,8 +43,8 @@
 </PageTransition>
 
 <footer class="w-full flex flex-col justify-center content-center">
-  <div class="min-h-[300px] bg-rose-700">
-    <Footer themeColor="red" />
+  <div class="min-h-[300px] bg-primary-medium">
+    <Footer />
   </div>
   <div class="bg-slate-700 text-white w-full">
     <p class="mx-auto w-fit py-2">
