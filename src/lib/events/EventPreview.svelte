@@ -1,10 +1,10 @@
 <script lang="ts">
   import { PUBLIC_IMAGE_BUCKET_URL } from "$env/static/public";
   import RedCtaButton from "$lib/buttons/redCtaButton.svelte";
-  import LineHeading from "$lib/headers/LineHeading.svelte";
+  import LineHeading from "$lib/headings/LineHeading.svelte";
   import TextWrapper from "$lib/wrappers/TextWrapper.svelte";
 
-  import type { EventPreview } from "$lib/events";
+  import type { EventPreview } from "$lib/events/events";
 
   let s3 = PUBLIC_IMAGE_BUCKET_URL;
 

@@ -14,21 +14,11 @@
   const s3 = PUBLIC_IMAGE_BUCKET_URL;
 
   let yShiftValue: any;
-  let tweenColors: any;
   let tweenHeights = [64, 80];
 
-  let blueTween: any = ["rgb(255,255,255)", "rgb(30,58,138)"];
-  let redTween: any = ["rgb(255,255,255)", "rgb(190,18,60)"];
+  let colorTween: any = ["rgb(255,255,255)", "rgb(5, 150, 105)"];
 
-  if (data.color === "red") {
-    tweenColors = redTween;
-  }
-
-  if (data.color === "blue") {
-    tweenColors = blueTween;
-  }
-
-  let barShift = buildTween(tweenColors, 250);
+  let barShift = buildTween(colorTween, 250);
   let yShift = buildTween(tweenHeights, 250);
 
   let index = 0;
@@ -44,7 +34,7 @@
     index = 0;
   }
 
-  $: barShift.set(tweenColors[index]);
+  $: barShift.set(colorTween[index]);
   $: yShift.set(tweenHeights[index]);
   $: navbarData = {
     index,
@@ -100,11 +90,7 @@
       </div>
       <div class="flex flex-row lg:pr-[50px] xl:pr-[200px] mx-5">
         {#each data.links as link}
-          <Link
-            {navbarData}
-            linkData={link}
-            color={data.color}
-          />
+          <Link {navbarData} linkData={link} color={data.color} />
         {/each}
       </div>
     </div>

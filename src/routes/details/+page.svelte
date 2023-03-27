@@ -2,12 +2,11 @@
   import LeftColumnTitleTable from "$lib/tables/LeftColumnTitleTable.svelte";
   import { groupLesson, mtmLesson } from "$lib/tables/TableDefs";
   import SectionWrapper from "$lib/wrappers/SectionWrapper.svelte";
-  import SubHeading from "$lib/headers/SubHeading.svelte";
+  import SubHeading from "$lib/headings/SubHeading.svelte";
   import TextWrapper from "$lib/wrappers/TextWrapper.svelte";
 </script>
 
 <SectionWrapper
-  themeColor="red"
   titleData={{ pretext: "講座の", highlight: "概要", posttext: "" }}
 >
   <TextWrapper>
@@ -23,7 +22,6 @@
 </SectionWrapper>
 
 <SectionWrapper
-  themeColor="red"
   titleData={{ pretext: "", highlight: "開講期間・受講料", posttext: "" }}
 >
   <LeftColumnTitleTable tableData={groupLesson} />

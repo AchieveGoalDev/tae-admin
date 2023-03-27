@@ -1,5 +1,5 @@
 <script lang="ts">
-    import HighlightTitle from "$lib/headers/HighlightTitle.svelte";
+  import HighlightTitle from "$lib/headings/HighlightTitle.svelte";
 </script>
 
-<HighlightTitle pretext="" highlight="最新情報" posttext="" themeColor="red" />
+<HighlightTitle pretext="" posttext="">新着情報</HighlightTitle>
