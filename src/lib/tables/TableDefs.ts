@@ -20,6 +20,10 @@ export type RowData = {
   cells: CellData[];
 };
 
+export type Row = {
+  cells: Cell[];
+};
+
 export type CellData = {
   isBold: boolean;
   isTitle: boolean;
@@ -35,6 +39,77 @@ class Cell {
     (this.isBold = isBold), (this.isTitle = isTitle), (this.content = content);
   }
 }
+
+export type SimpleTable = {
+  colspan: number;
+  title: string;
+  rowHeaders: Cell[];
+  rows: Row[];
+};
+
+export const 新規受講費用: SimpleTable = {
+  colspan: 2,
+  title: "新規受講費用（税込み）",
+  rowHeaders: [
+    new Cell(true, true, "費用項目"),
+    new Cell(true, true, "受講料"),
+  ],
+  rows: [
+    {
+      cells: [
+        new Cell(true, true, "受講料"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [
+        new Cell(true, true, "教材費"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [
+        new Cell(true, true, "事務手数料"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [new Cell(true, true, "合計"), new Cell(true, true, "42,500円")],
+    },
+  ],
+};
+
+export const リピーター受講費用: SimpleTable = {
+  colspan: 2,
+  title: "リピーター受講費（税込み）",
+  rowHeaders: [
+    new Cell(true, true, "費用項目"),
+    new Cell(true, true, "受講料"),
+  ],
+  rows: [
+    {
+      cells: [
+        new Cell(true, true, "受講料"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [
+        new Cell(true, true, "教材費"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [
+        new Cell(true, true, "事務手数料"),
+        new Cell(false, false, "42,500円"),
+      ],
+    },
+    {
+      cells: [new Cell(true, true, "合計"), new Cell(true, true, "42,500円")],
+    },
+  ],
+};
 
 const groupOne: Table = {
   title: "開講プログラム",
@@ -271,9 +346,4 @@ export const mtmLesson: TableContainer = {
   },
 
   tables: [mtmOne, mtmTwo, mtmThree],
-};
-
-export const studentAmt: TableContainer = {
-  title: "募集人数/ 枠数",
-  cols: 9,
 };

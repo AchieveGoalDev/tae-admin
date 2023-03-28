@@ -1,6 +1,7 @@
 <script lang="ts">
   import LeftColumnTitleTable from "$lib/tables/LeftColumnTitleTable.svelte";
-  import { groupLesson, mtmLesson } from "$lib/tables/TableDefs";
+  import { groupLesson, mtmLesson, 新規受講費用 } from "$lib/tables/TableDefs";
+  import SimpleTable from "$lib/tables/SimpleTable.svelte";
   import SectionWrapper from "$lib/wrappers/SectionWrapper.svelte";
   import SubHeading from "$lib/headings/SubHeading.svelte";
   import TextWrapper from "$lib/wrappers/TextWrapper.svelte";
@@ -24,6 +25,7 @@
 <SectionWrapper
   titleData={{ pretext: "", highlight: "開講期間・受講料", posttext: "" }}
 >
+  <SimpleTable data={新規受講費用} />
   <LeftColumnTitleTable tableData={groupLesson} />
   <div class="h-[30px]" />
   <LeftColumnTitleTable tableData={mtmLesson} />

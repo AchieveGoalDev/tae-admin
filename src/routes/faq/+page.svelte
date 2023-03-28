@@ -12,9 +12,9 @@
 >
   <div class="w-full">
     <HighlightTitle pretext="よくある" posttext="">質問</HighlightTitle>
-    <LinkList {collections} color="red" />
+    <LinkList {collections} />
     {#each collections as collection}
-      <CollectionLink color="red" {collection} />
+      <CollectionLink {collection} />
     {/each}
   </div>
 </div>
