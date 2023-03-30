@@ -1,6 +1,7 @@
 <script lang="ts">
   import { PUBLIC_BUCKET_URL } from "$env/static/public";
 
+  import EmphasisWrapper from "$lib/wrappers/EmphasisWrapper.svelte";
   import Hero from "$lib/hero.svelte";
   import MobileHero from "$lib/hero/MobileHero.svelte";
   import Cards from "$lib/cards/threeCardContainer.svelte";
@@ -12,6 +13,7 @@
   import ApplicationProcess from "$lib/homepage/ApplicationProcess.svelte";
   import TextWrapper from "$lib/wrappers/TextWrapper.svelte";
   import { windowWidth } from "$lib/store/windowData";
+  import ThreeDButton from "$lib/buttons/ThreeDButton.svelte";
 
   let width: number;
 
@@ -33,7 +35,6 @@
 {/if}
 <div class="flex flex-col my-10 max-w-[1000px] mx-auto">
   <SectionWrapper
-    themeColor="red"
     titleData={{
       pretext: "",
       highlight: "Toyo Achieve English",
@@ -49,18 +50,18 @@
           class="w-[full] sm:w-auto sm:h-[300px] rounded-md"
         />
       </MediaWrapper>
-      <p class="text-2xl mb-5 mx-auto">
-        <span class="text-4xl font-bold text-rose-700">Lorem ipsum</span> dolor sit,
-        amet consectetur adipisicing elit. Nihil deserunt, magnam sapiente repudiandae
-        similique impedit dolorem suscipit. Quibusdam nemo dolorem, ratione tempora
-        eum dicta! Quisquam assumenda minima ex.
-      </p>
-      <p class="text-2xl my-1 mx-auto">
-        Lorem ipsum dolor sit amet <span
-          class="text-4xl font-bold text-rose-700">consectetur adipisicing</span
-        > elit. Ipsum, quod. Non modi beatae laborum nostrum cum enim veritatis incidunt
+      <TextWrapper>
+        <EmphasisWrapper>Lorem Ipsum</EmphasisWrapper> dolor sit, amet consectetur
+        adipisicing elit. Nihil deserunt, magnam sapiente repudiandae similique impedit
+        dolorem suscipit. Quibusdam nemo dolorem, ratione tempora eum dicta! Quisquam
+        assumenda minima ex.
+      </TextWrapper>
+      <TextWrapper>
+        Lorem ipsum dolor sit amet
+        <EmphasisWrapper>consectetur adipisicing</EmphasisWrapper>
+        elit. Ipsum, quod. Non modi beatae laborum nostrum cum enim veritatis incidunt
         est.
-      </p>
+      </TextWrapper>
     </div>
     <div
       class="flex flex-col mx-5 sm:mx-0 sm:flex-row place-content-around align-items-center"
@@ -68,6 +69,8 @@
       <BlueCTA href="/about" text="詳細はこちら" />
       <RedCTA href="/apply" text="今すぐお問い合わせ" />
     </div>
+    <ThreeDButton data={{ href: "#", color: "secondary" }}>Push Me</ThreeDButton
+    >
   </SectionWrapper>
   <MediaWrapper description="東洋AchieveEnglishの紹介動画">
     <iframe
@@ -81,7 +84,6 @@
     />
   </MediaWrapper>
   <SectionWrapper
-    themeColor="red"
     titleData={{
       pretext: "プログラムの",
       highlight: "3つ",
@@ -91,13 +93,11 @@
     <Cards />
   </SectionWrapper>
   <SectionWrapper
-    themeColor="red"
     titleData={{ pretext: "申し込みの", highlight: "流れ", posttext: "" }}
   >
     <ApplicationProcess />
   </SectionWrapper>
   <SectionWrapper
-    themeColor="red"
     titleData={{ pretext: "学生の", highlight: "声", posttext: "" }}
   >
     <TextWrapper>

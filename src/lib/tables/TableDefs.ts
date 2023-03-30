@@ -30,7 +30,7 @@ export type CellData = {
   content: string;
 };
 
-class Cell {
+export class Cell {
   isBold: boolean;
   isTitle: boolean;
   content: string;
@@ -57,19 +57,19 @@ export const 新規受講費用: SimpleTable = {
   rows: [
     {
       cells: [
-        new Cell(true, true, "受講料"),
+        new Cell(false, false, "受講料"),
         new Cell(false, false, "42,500円"),
       ],
     },
     {
       cells: [
-        new Cell(true, true, "教材費"),
+        new Cell(false, false, "教材費"),
         new Cell(false, false, "42,500円"),
       ],
     },
     {
       cells: [
-        new Cell(true, true, "事務手数料"),
+        new Cell(false, false, "事務手数料"),
         new Cell(false, false, "42,500円"),
       ],
     },

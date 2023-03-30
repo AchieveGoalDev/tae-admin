@@ -26,7 +26,9 @@
   titleData={{ pretext: "", highlight: "開講期間・受講料", posttext: "" }}
 >
   <SimpleTable data={新規受講費用} />
-  <LeftColumnTitleTable tableData={groupLesson} />
-  <div class="h-[30px]" />
-  <LeftColumnTitleTable tableData={mtmLesson} />
+  <!--
+<LeftColumnTitleTable tableData={groupLesson} />
+    <div class="h-[30px]" />
+    <LeftColumnTitleTable tableData={mtmLesson} />
+  -->
 </SectionWrapper>
