@@ -2,14 +2,8 @@
   import type { NavbarData } from "./NavTypes.svelte";
   import type { LinkData } from "./LinkDefs";
 
-  import { appStyle } from "$lib/appData";
-
   export let linkData: LinkData;
   export let navbarData: NavbarData;
-
-  function hoverColor() {
-    return "hover:" + "appStyle.bgColors.primaryLight";
-  }
 
   let hovered: boolean = false;
   let page = navbarData.page;
