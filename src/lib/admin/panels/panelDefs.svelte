@@ -1,6 +1,10 @@
 <script lang="ts" context="module">
-  import TestTab from "$lib/admin/panels/TestTab.svelte";
   import UnderConstructionTab from "$lib/admin/panels/UnderConstructionTab.svelte";
+  import StudentTab from "$lib/admin/panels/StudentTab.svelte";
+
+  import StudentRowCourse from "$lib/admin/expandable-rows/StudentRowCourse.svelte";
+  import StudentRowPersonal from "$lib/admin/expandable-rows/StudentRowPersonal.svelte";
+  import StudentRowTest from "$lib/admin/expandable-rows/StudentRowTest.svelte";
 
   export type Tab = {
     icon: string;
@@ -14,13 +18,24 @@
     defaultTab: number;
   };
 
+  export type TextTab = {
+    text: string;
+    id: number;
+    component: any;
+  };
+
+  export type SubPanel = {
+    tabs: TextTab[];
+    defaultTab: number;
+  };
+
   export const TestPanel: Panel = {
     tabs: [
       {
         icon: "student.svg",
         iconAlt: "学生管理タブ",
         id: 1,
-        component: UnderConstructionTab,
+        component: StudentTab,
       },
       {
         icon: "approve.svg",
@@ -39,6 +54,27 @@
         iconAlt: "講師管理タブ",
         id: 4,
         component: UnderConstructionTab,
+      },
+    ],
+    defaultTab: 1,
+  };
+
+  export const StudentPanel: SubPanel = {
+    tabs: [
+      {
+        text: "個人情報",
+        id: 1,
+        component: StudentRowPersonal,
+      },
+      {
+        text: "試験情報",
+        id: 2,
+        component: StudentRowCourse,
+      },
+      {
+        text: "コース",
+        id: 3,
+        component: StudentRowTest,
       },
     ],
     defaultTab: 1,
