@@ -8,7 +8,7 @@
   export let send: boolean;
 
   const db =
-    "https://8grjl0fpxk.execute-api.ap-northeast-1.amazonaws.com/production";
+    "https://8grjl0fpxk.execute-api.ap-northeast-1.amazonaws.com/production/students";
 
   async function handleDBPut(data: Personal) {
     const response = await fetch(db, {
