@@ -3,9 +3,13 @@
   import StudentRow from "$lib/admin/expandable-rows/StudentRow.svelte";
   import UtilityBar from "$lib/admin/panels/UtilityBar.svelte";
 
+  import ModalWrapper from "$lib/admin/modals/ModalWrapper.svelte";
+  import StudentPersonalModal from "$lib/admin/modals/StudentPersonalModal.svelte";
+
   import dummyData from "$lib/admin/data/dummystudents.json";
 
   let students: Student[] = [];
+  let modal = false;
 
   dummyData.data.forEach((student) => {
     let toInitialize = new Student(
@@ -37,12 +41,10 @@
   }
 
   const data = "hello";
-
-  $: console.log(...students);
 </script>
 
 <div class="flex flex-col h-full relative">
-  <button on:click={() => console.log(students)}>students</button>
+  <button on:click={() => (modal = !modal)}>modal</button>
   <UtilityBar>
     <input type="text" class="bg-slate-100" />
     <AddItem {data} handleAdd={addStudent} alt="学生を追加" />
@@ -53,3 +55,9 @@
     {/each}
   </div>
 </div>
+
+{#if modal}
+  <ModalWrapper bind:control={modal}>
+    <StudentPersonalModal />
+  </ModalWrapper>
+{/if}

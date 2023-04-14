@@ -142,6 +142,7 @@ export class Personal {
   personalMail: string | null;
   phone: string | null;
   isValid: boolean;
+  errors: string[];
 
   constructor() {
     this.number = null;
@@ -158,6 +159,7 @@ export class Personal {
     this.schoolMail = null;
     this.personalMail = null;
     this.phone = null;
+    this.errors = [];
   }
 
   initializeData(data: any) {
@@ -248,6 +250,12 @@ export class Personal {
 
   setMajor(data: string) {
     this.major = data;
+  }
+
+  validateName(data: string) {
+    if (data !== "Justin") {
+      this.errors.push("Not Justin");
+    }
   }
 }
 
