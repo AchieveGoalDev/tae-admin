@@ -5,14 +5,20 @@
   import type { Personal } from "$lib/admin/data/application";
 
   export let control: boolean;
-  export let send: boolean;
+  let send: boolean;
 
   const db =
     "https://8grjl0fpxk.execute-api.ap-northeast-1.amazonaws.com/production/students";
 
   async function handleDBPut(data: Personal) {
     const response = await fetch(db, {
+      mode: "cors",
       method: "POST",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      referrerPolicy: "no-referrer",
       body: `{
         "TableName": "tae-test",
     "Item": {
@@ -42,6 +48,7 @@
       send = !send;
 
       const response = handleDBPut($student);
+      console.log(response);
     }
   }
 
