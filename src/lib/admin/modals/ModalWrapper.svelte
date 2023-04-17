@@ -15,9 +15,10 @@
       mode: "cors",
       method: "POST",
       cache: "no-cache",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Origin": "https://jocular-cactus-6e66e6.netlify.app"
+        Origin: "https://jocular-cactus-6e66e6.netlify.app",
       },
       referrerPolicy: "no-referrer",
       body: `{
