@@ -21,23 +21,10 @@
         //prettier-ignore
       },
       referrerPolicy: "no-referrer",
-      body: `{
-        "TableName": "tae-test",
-    "Item": {
-        "PK": {
-            "S": "STUDENT" 
-        },
-        "SK": {
-            "S": "${data.name}"
-        },
-        "name": {
-            "S": "${data.name}"
-        }
-        "gender": {
-            "S": "${data.gender}"
-        }
-    }
-      }`,
+      body: JSON.stringify({
+        name: data.name,
+        gender: data.gender,
+      }),
     }).then((response) => response.json());
     console.log("From inside fetch", response);
     return response;
