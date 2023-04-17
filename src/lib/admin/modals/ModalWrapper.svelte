@@ -38,9 +38,8 @@
         }
     }
       }`,
-    });
-
-    console.log(response);
+    }).then((response) => response.json());
+    console.log("From inside fetch", response);
     return response;
   }
 
