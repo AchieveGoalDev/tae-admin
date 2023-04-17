@@ -15,7 +15,6 @@
       mode: "cors",
       method: "POST",
       cache: "no-cache",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         //prettier-ignore
