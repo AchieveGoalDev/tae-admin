@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { Personal } from "../data/application";
-  import { student } from "../editData";
+  import type { Personal } from "$lib/admin/data/application";
+  import { student } from "$lib/admin/editData";
+  import { personalInputs } from "$lib/admin/data/inputs";
 
-  let data = new Personal();
+  import TextInput from "$lib/admin/modals/inputs/TextInput.svelte";
 
-  function handleUpdate(key: string, value: Event) {
-    data[key] = value;
-  }
+  let data = $student;
 
   function writeToStore(data: Personal) {
     $student = data;
@@ -16,38 +15,10 @@
   $: console.log($student);
 </script>
 
-<div class="grid grid-cols-2 my-4　gap-y-0.5">
-  <label class="font-bold self-center justify-self-end" for="学籍番号">
-    学籍番号:
-  </label>
-  <input
-    class="shadow-md ml-2 p-1 self-center justify-self-start"
-    on:input={(e) => handleUpdate("number", e?.target?.value)}
-    name="学籍番号"
-  />
-  <label class="font-bold self-center" for="性別"> 性別: </label>
-  <input
-    class="shadow-md ml-2 p-1 mb-3 self-start"
-    on:input={(e) => handleUpdate("gender", e?.target?.value)}
-    name="性別"
-  />
-
-  <label class="font-bold mb-3">
-    名前:
-    <input
-      on:input={(e) => handleUpdate("name", e?.target?.value)}
-      class="shadow-md ml-2 p-1"
-    />
-  </label>
-  <label class="font-bold mb-3">
-    :
-    <input
-      on:input={(e) => handleUpdate("name", e?.target?.value)}
-      class="shadow-md ml-2 p-1"
-    />
-  </label>
-  <div>
-    {data.name}
-    {data.gender}
-  </div>
+<div class="grid grid-cols-4 my-4　gap-y-4 mx-3">
+  {#each personalInputs as input}
+    {#if input.type === "input"}
+      <TextInput label={input.label} key={input.key} {data} size={input.size} />
+    {/if}
+  {/each}
 </div>

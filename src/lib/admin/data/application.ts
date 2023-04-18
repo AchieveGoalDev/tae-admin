@@ -127,6 +127,7 @@ export class TestHistory {
 }
 
 export class Personal {
+  [key: string]: any;
   number: string | null;
   gender: string | null;
   name: string | null;
@@ -142,7 +143,23 @@ export class Personal {
   personalMail: string | null;
   phone: string | null;
   isValid: boolean;
-  errors: string[];
+  errors: {
+    [key: string]: any;
+    number: string[];
+    gender: string[];
+    name: string[];
+    furigana: string[];
+    first: string[];
+    last: string[];
+    post: string[];
+    address: string[];
+    status: string[];
+    year: string[];
+    major: string[];
+    schoolMail: string[];
+    personalMail: string[];
+    phone: string[];
+  };
 
   constructor() {
     this.number = null;
@@ -159,7 +176,22 @@ export class Personal {
     this.schoolMail = null;
     this.personalMail = null;
     this.phone = null;
-    this.errors = [];
+    this.errors = {
+      number: [],
+      gender: [],
+      name: [],
+      furigana: [],
+      first: [],
+      last: [],
+      post: [],
+      address: [],
+      status: [],
+      year: [],
+      major: [],
+      schoolMail: [],
+      personalMail: [],
+      phone: [],
+    };
   }
 
   initializeData(data: any) {
@@ -252,9 +284,138 @@ export class Personal {
     this.major = data;
   }
 
-  validateName(data: string) {
-    if (data !== "Justin") {
-      this.errors.push("Not Justin");
+  resetErrors() {
+    this.errors = {
+      number: [],
+      gender: [],
+      name: [],
+      furigana: [],
+      first: [],
+      last: [],
+      post: [],
+      address: [],
+      status: [],
+      year: [],
+      major: [],
+      schoolMail: [],
+      personalMail: [],
+      phone: [],
+    };
+  }
+
+  validateData() {
+    this.resetErrors();
+    this.validateName();
+    this.validateNumber();
+    this.validateFurigana();
+    this.validateFirst();
+  }
+
+  validateName() {
+    if (this.name === "") {
+      this.errors.name.push("必要項目です");
+    }
+  }
+
+  validateFurigana() {
+    const カタカナ = new RegExp("^[\u30A0-\u30FF]+$");
+    const space = new RegExp("　+");
+    let isKana = true;
+
+    if (this.furigana) {
+      const nameString = this.furigana.split("");
+
+      nameString.forEach((letter) => {
+        console.log(letter.match(カタカナ));
+        console.log(letter.match(space));
+        if (!letter.match(カタカナ) && !letter.match(space)) {
+          isKana = false;
+        }
+      });
+    }
+
+    if (!isKana) {
+      this.errors.furigana.push("全角カタカナで入力してください");
+    }
+
+    if (this.furigana === "") {
+      this.errors.furigana.push("必要項目です");
+    }
+  }
+
+  validateNumber() {
+    const letterRegex = new RegExp("^[a-zA-Z]+$");
+    const fullSpaceRegex = new RegExp("^[^ -~｡-ﾟ]+$");
+
+    if (this.number) {
+      const stringArray = this.number.split("");
+      let hasFull = false;
+
+      stringArray.forEach((letter) => {
+        if (letter.match(fullSpaceRegex)) {
+          hasFull = true;
+        }
+      });
+
+      if (hasFull) {
+        this.errors.number.push("学籍番号は半角文字で入力してください");
+      }
+
+      if (stringArray[0].match(letterRegex)) {
+        this.errors.number.push(
+          "学籍番号はアルファベットから始まることはありません"
+        );
+      }
+
+      if (stringArray.length < 10 && stringArray.length > 0) {
+        this.errors.number.push("学籍番号は10文字以上にしてください");
+      }
+    } else if (!this.number) {
+      this.errors.number.push("必要項目です");
+    }
+  }
+
+  validateFirst() {
+    const letterRegex = new RegExp("^[a-zA-Z]+$");
+    let isLetters = true;
+
+    if (this.first) {
+      const nameArray = this.first.split("");
+      nameArray.forEach((letter) => {
+        if (!letter.match(letterRegex)) {
+          isLetters = false;
+        }
+      });
+    }
+
+    if (!isLetters) {
+      this.errors.first.push("半角ロマジで入力してください");
+    }
+
+    if (this.first === "") {
+      this.errors.first.push("必要項目です");
+    }
+  }
+
+  validateLast() {
+    const letterRegex = new RegExp("^[a-zA-Z]+$");
+    let isLetters = true;
+
+    if (this.last) {
+      const nameArray = this.last.split("");
+      nameArray.forEach((letter) => {
+        if (!letter.match(letterRegex)) {
+          isLetters = false;
+        }
+      });
+    }
+
+    if (!isLetters) {
+      this.errors.last.push("半角ロマジで入力してください");
+    }
+
+    if (this.last === "") {
+      this.errors.last.push("必要項目です");
     }
   }
 }

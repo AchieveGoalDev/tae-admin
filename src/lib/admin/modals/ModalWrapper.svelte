@@ -56,7 +56,9 @@
     <div
       class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
     >
-      <div class="bg-white shadow-2xl grid grid-rows-[12] w-2/3 min-h-[500px]">
+      <div
+        class="bg-white shadow-2xl grid grid-rows-[12] max-w-2/3 min-h-[500px]"
+      >
         <div
           class="flex font-bold text-xl items-center justify-center bg-primary-dark text-white"
         >
