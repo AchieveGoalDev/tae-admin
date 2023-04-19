@@ -139,6 +139,7 @@ export class Personal {
   status: string | null;
   year: string | null;
   major: string | null;
+  faculty: string | null;
   schoolMail: string | null;
   personalMail: string | null;
   phone: string | null;
@@ -156,6 +157,7 @@ export class Personal {
     status: string[];
     year: string[];
     major: string[];
+    faculty: string[];
     schoolMail: string[];
     personalMail: string[];
     phone: string[];
@@ -173,6 +175,7 @@ export class Personal {
     this.status = null;
     this.year = null;
     this.major = null;
+    this.faculty = null;
     this.schoolMail = null;
     this.personalMail = null;
     this.phone = null;
@@ -188,6 +191,7 @@ export class Personal {
       status: [],
       year: [],
       major: [],
+      faculty: [],
       schoolMail: [],
       personalMail: [],
       phone: [],
@@ -297,6 +301,7 @@ export class Personal {
       status: [],
       year: [],
       major: [],
+      faculty: [],
       schoolMail: [],
       personalMail: [],
       phone: [],
@@ -312,7 +317,7 @@ export class Personal {
   }
 
   validateName() {
-    if (this.name === "") {
+    if (!this.name) {
       this.errors.name.push("必要項目です");
     }
   }
@@ -326,8 +331,6 @@ export class Personal {
       const nameString = this.furigana.split("");
 
       nameString.forEach((letter) => {
-        console.log(letter.match(カタカナ));
-        console.log(letter.match(space));
         if (!letter.match(カタカナ) && !letter.match(space)) {
           isKana = false;
         }
@@ -338,7 +341,7 @@ export class Personal {
       this.errors.furigana.push("全角カタカナで入力してください");
     }
 
-    if (this.furigana === "") {
+    if (!this.furigana) {
       this.errors.furigana.push("必要項目です");
     }
   }

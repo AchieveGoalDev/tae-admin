@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { student } from "../editData";
+  import { modalState } from "$lib/admin/stores/modalControl";
 
   import type { Personal } from "$lib/admin/data/application";
 
@@ -60,15 +61,17 @@
         class="bg-white shadow-2xl grid grid-rows-[12] max-w-2/3 min-h-[500px]"
       >
         <div
-          class="flex font-bold text-xl items-center justify-center bg-primary-dark text-white"
+          class="flex font-bold text-xl items-center justify-center bg-primary-dark text-white py-2"
         >
           新規学生登録 - 個人情報
         </div>
-        <div class="row-start-[2] row-end-[12] overflow-y-scroll">
+        <div
+          class="row-start-[2] row-end-[12] overflow-y-scroll px-3 max-h-[700px]"
+        >
           <slot />
         </div>
         <div
-          class="row-start-[12] row-span-1 w-full bg-primary-ultralight h-full items-center flex flex-row place-content-around"
+          class="row-start-[12] row-span-1 w-full bg-primary-ultralight h-full items-center flex flex-row place-content-around py-2"
         >
           <button
             class="bg-rose-700 text-lg text-white rounded-md p-1 transition transitions-all hover:bg-rose-600 shadow-md"
