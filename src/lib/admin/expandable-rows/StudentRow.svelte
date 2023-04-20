@@ -10,10 +10,11 @@
 
   import type {
     Course,
-    Personal,
     TestHistory,
     Student,
   } from "$lib/admin/data/application";
+
+  import type { Personal } from "$lib/admin/data/personal";
 
   export let index: number;
   export let data: Student;

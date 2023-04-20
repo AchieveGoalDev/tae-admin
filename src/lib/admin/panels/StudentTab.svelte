@@ -26,12 +26,9 @@
     students = [...students, toInitialize];
   });
 
-  import {
-    Course,
-    TestHistory,
-    Personal,
-    Student,
-  } from "$lib/admin/data/application";
+  import { Course, TestHistory, Student } from "$lib/admin/data/application";
+
+  import { Personal } from "$lib/admin/data/personal";
 
   function addStudent() {
     students = [
