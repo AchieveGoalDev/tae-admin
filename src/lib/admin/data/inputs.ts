@@ -2,8 +2,10 @@ export type InputDef = {
   type: "input";
   key: string;
   label: string;
+  sublabel: string | null;
   size: string | null;
   placeholder: string;
+  isRequired: boolean;
 };
 
 export type RadioDef = {
@@ -13,13 +15,23 @@ export type RadioDef = {
   options: string[];
 };
 
+export type SelectDef = {
+  type: "select";
+  key: string;
+  label: string;
+  options: string[];
+  isRequired: boolean;
+};
+
 export const personalInputs: (InputDef | RadioDef)[] = [
   {
     type: "input",
     key: "number",
     label: "学籍番号",
+    sublabel: null,
     size: "md",
     placeholder: "10AEF12345",
+    isRequired: true,
   },
   {
     type: "radio",
@@ -31,29 +43,37 @@ export const personalInputs: (InputDef | RadioDef)[] = [
     type: "input",
     key: "name",
     label: "氏名",
+    sublabel: null,
     size: "",
     placeholder: "山田 太郎",
+    isRequired: true,
   },
   {
     type: "input",
     key: "furigana",
     label: "フリガナ",
+    sublabel: null,
     size: "lg",
     placeholder: "ヤマダ　タロウ",
+    isRequired: true,
   },
   {
     type: "input",
     key: "first",
-    label: "英字名（名前）",
+    label: "名前",
+    sublabel: "ローマ字",
     size: "",
     placeholder: "Taro",
+    isRequired: true,
   },
   {
     type: "input",
     key: "last",
-    label: "英字名（名字）",
+    label: "苗字",
+    sublabel: "ローマ字",
     size: "",
     placeholder: "YAMADA",
+    isRequired: true,
   },
   {
     type: "radio",
@@ -65,21 +85,39 @@ export const personalInputs: (InputDef | RadioDef)[] = [
     type: "input",
     key: "year",
     label: "学年",
+    sublabel: null,
     size: "sm",
-    placeholder: "",
+    placeholder: "1",
+    isRequired: true,
   },
-	{
+  {
     type: "input",
     key: "major",
     label: "学部",
-    size: "sm",
-    placeholder: "",
+    sublabel: null,
+    size: "md",
+    placeholder: "文学部",
+    isRequired: true,
   },
-	{
+  {
     type: "input",
     key: "faculty",
     label: "学科",
-    size: "sm",
-    placeholder: "",
+    sublabel: null,
+    size: "lg",
+    placeholder: "哲学学科",
+    isRequired: true,
+  },
+];
+
+export const courseInputs = [
+  {
+    hey: "sup",
+  },
+];
+
+export const testInputs = [
+  {
+    sup: "hey",
   },
 ];

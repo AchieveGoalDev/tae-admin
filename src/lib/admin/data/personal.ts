@@ -116,6 +116,8 @@ export class Personal {
     }
   }
 
+  //***************** SETTERS ********/
+
   setNumber(data: string) {
     this.number = data;
   }
@@ -179,6 +181,8 @@ export class Personal {
       phone: [],
     };
   }
+
+  //******************* VALIDATION  ****************/
 
   validateData() {
     this.resetErrors();
@@ -311,7 +315,7 @@ export class Personal {
   }
 
   validateFaculty() {
-    if (!this.year) {
+    if (!this.faculty) {
       this.errors.faculty.push("必要項目です");
     }
   }
