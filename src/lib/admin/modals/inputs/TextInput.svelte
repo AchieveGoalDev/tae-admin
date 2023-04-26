@@ -1,12 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { modalState } from "$lib/admin/stores/modalControl";
+  import { slide } from "svelte/transition";
+
+  import ValidationIconSlider from "$lib/admin/modals/inputs/ValidationIconSlider.svelte";
+
   import type { Personal } from "$lib/admin/data/personal";
-  import { PUBLIC_IMAGE_BUCKET_URL } from "$env/static/public";
-  import { slide, fade } from "svelte/transition";
-
-  let s3 = PUBLIC_IMAGE_BUCKET_URL;
-
   import type { InputDef } from "$lib/admin/data/inputs";
 
   export let definitions: InputDef;
@@ -20,7 +19,7 @@
     data[key] = target.value;
     data.validateData();
 
-    $modalState.errors = handleModalErrorList(data);
+    $modalState.personalErrors = handleModalErrorList(data);
   }
 
   function handleModalErrorList(data: Personal) {
@@ -71,23 +70,28 @@
 
   onMount(async () => {
     data.validateData();
-    $modalState.errors = handleModalErrorList(data);
+    $modalState. = handleModalErrorList(data);
+    data = data;
   });
 
   $: if (wasFocused) {
     data.validateData();
-    $modalState.errors = handleModalErrorList(data);
+    $modalState.personalErrors = handleModalErrorList(data);
 
     displayError = true;
     wasFocused = false;
   }
 </script>
 
-<label
-  class="font-bold self-center justify-self-end me-2"
-  for={definitions.label}
->
-  <span>{definitions.label}:</span>
+<label class="font-bold self-center  me-2" for={definitions.label}>
+  <div class="flex flex-col px-1 content-center">
+    <span>{definitions.label}:</span>
+    {#if definitions.sublabel}
+      <sub class="mt-1 font-normal italic text-stone-500"
+        >{definitions.sublabel}</sub
+      >
+    {/if}
+  </div>
 </label>
 <div class="col-span-2 flex-col">
   <span class="flex">
@@ -107,6 +111,7 @@
 			border-solid
 			border-primary-medium
 			focus:border-l-4
+			bg-stone-50
 			"
       on:focus={() => (wasFocused = true)}
       on:input={(e) => handleUpdate(definitions.key, e)}
@@ -114,19 +119,14 @@
       value={data[definitions.key]}
       placeholder={definitions.placeholder}
     />
-    {#if displayError}
-      {#if data.errors[definitions.key].length > 0}
-        <img
-          transition:fade
-          src={s3 + "images/Icons/errorThick.svg"}
-          class="ml-4 w-[20px]"
-          alt="エラー"
-        />
-      {/if}
-    {/if}
+    <ValidationIconSlider
+      {displayError}
+      errors={data.errors[definitions.key]}
+      isRequired={definitions.isRequired}
+    />
   </span>
   <div
-    class="flex flex-col justify-start items-start bg-red-50 max-w-[10em] mt-2"
+    class="flex flex-col justify-start items-start bg-red-50 max-w-[10em] mt-2 ml-2"
   >
     {#if displayError}
       {#each data.errors[definitions.key] as error}

@@ -1,19 +1,30 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+
   import { student } from "../editData";
   import { modalState } from "$lib/admin/stores/modalControl";
+  import { ModalState } from "$lib/admin/stores/modalControl";
+  import type { StudentModals } from "$lib/admin/stores/modalControl";
 
   import ModalSend from "$lib/admin/tooltips/ModalSend.svelte";
+  import ModalNav from "$lib/admin/modals/navigation/ModalNav.svelte";
 
   import type { Personal } from "$lib/admin/data/personal";
-  import type { ModalState } from "$lib/admin/stores/modalControl";
 
+  export let modalType: StudentModals;
   export let control: boolean;
+
   let send: boolean;
   let canSend: boolean = false;
 
   const db =
     "https://8grjl0fpxk.execute-api.ap-northeast-1.amazonaws.com/production/students";
+
+  onMount(async () => {
+    //@ts-ignore
+    $modalState = new ModalState(modalType);
+  });
 
   async function handleDBPut(data: Personal) {
     const response = await fetch(db, {
@@ -46,7 +57,7 @@
   }
 
   function handleCanSend(data: ModalState) {
-    if (data.errors.length > 0) {
+    if (data.checkErrors()) {
       return false;
     } else {
       return true;
@@ -80,8 +91,9 @@
         >
           新規学生登録 - 個人情報
         </div>
+        <ModalNav />
         <div
-          class="row-start-[2] row-end-[12] overflow-y-scroll px-3 max-h-[500px]"
+          class="row-start-[3] row-end-[12] overflow-y-scroll px-3 max-h-[500px]"
         >
           <slot />
         </div>
@@ -115,7 +127,7 @@
               >
             </div>
             {#if hoverSend}
-              <ModalSend errorlist={$modalState.errors} />
+              <ModalSend modalData={$modalState} />
             {/if}
           {/if}
         </div>

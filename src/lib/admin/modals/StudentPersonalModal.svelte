@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Personal } from "$lib/admin/data/personal";
   import { student } from "$lib/admin/editData";
-  import { modalState } from "$lib/admin/stores/modalControl";
   import { personalInputs } from "$lib/admin/data/inputs";
 
   import TextInput from "$lib/admin/modals/inputs/TextInput.svelte";
@@ -19,6 +18,7 @@
   {#each personalInputs as input (input.label)}
     {#if input.type === "input"}
       <TextInput definitions={input} {data} />
+      <hr class="col-span-full" />
     {/if}
   {/each}
 </div>

@@ -18,15 +18,25 @@ export enum CAMPUSES {
   KAWAGOE = "川越",
 }
 
+const pleaseSelect = "選択してください";
+// let necessary = "必要項目です";
+
 export class Course {
   static COURSES = COURSES;
   static LEVELS = LEVELS;
 
+  [key: string]: any;
   campus: CAMPUSES | null;
   type: COURSES | null;
   text: string | null;
   change: boolean | null;
-  isValid: boolean | null;
+  errors: {
+    [key: string]: any;
+    campus: string[];
+    type: string[];
+    text: string[];
+    change: string[];
+  };
 
   constructor() {
     this.campus = null;
@@ -69,12 +79,31 @@ export class Course {
   }
 
   checkIsValid() {
+    this.resetErrors();
+
     if (this.campus === null) {
-      this.isValid = false;
+      this.errors.campus.push(pleaseSelect);
     }
 
     if (this.type === null) {
-      this.isValid = false;
+      this.errors.type.push(pleaseSelect);
     }
+
+    if (this.text === null) {
+      this.errors.text.push(pleaseSelect);
+    }
+
+    if (this.change === null) {
+      this.errors.change.push(pleaseSelect);
+    }
+  }
+
+  resetErrors() {
+    this.errors = {
+      campus: [],
+      type: [],
+      text: [],
+      change: [],
+    };
   }
 }

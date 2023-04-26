@@ -26,8 +26,8 @@
     students = [...students, toInitialize];
   });
 
-  import { Course, TestHistory, Student } from "$lib/admin/data/application";
-
+  import { TestHistory, Student } from "$lib/admin/data/application";
+  import { Course } from "$lib/admin/data/course";
   import { Personal } from "$lib/admin/data/personal";
 
   function addStudent() {
@@ -54,7 +54,7 @@
 </div>
 
 {#if modal}
-  <ModalWrapper bind:control={modal}>
+  <ModalWrapper bind:control={modal} modalType={"create-student"}>
     <StudentPersonalModal />
   </ModalWrapper>
 {/if}

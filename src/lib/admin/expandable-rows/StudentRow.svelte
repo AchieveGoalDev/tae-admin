@@ -3,18 +3,15 @@
   import { PUBLIC_IMAGE_BUCKET_URL } from "$env/static/public";
   const s3 = PUBLIC_IMAGE_BUCKET_URL;
 
-  import { COURSES, LEVELS, CAMPUSES } from "$lib/admin/data/application";
+  import { COURSES, LEVELS, CAMPUSES } from "$lib/admin/data/course";
 
   import StudentRowPanel from "$lib/admin/expandable-rows/StudentRowPanel.svelte";
   import { StudentPanel } from "$lib/admin/panels/panelDefs.svelte";
 
-  import type {
-    Course,
-    TestHistory,
-    Student,
-  } from "$lib/admin/data/application";
+  import type { TestHistory, Student } from "$lib/admin/data/application";
 
   import type { Personal } from "$lib/admin/data/personal";
+  import type { Course } from "$lib/admin/data/course";
 
   export let index: number;
   export let data: Student;
