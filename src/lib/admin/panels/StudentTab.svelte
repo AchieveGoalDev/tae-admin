@@ -37,7 +37,7 @@
     ];
   }
 
-  const data = "hello";
+const data = "hello";
 </script>
 
 <div class="flex flex-col h-full relative">

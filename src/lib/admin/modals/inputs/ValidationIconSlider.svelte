@@ -13,7 +13,7 @@
 
 <div class="flex flex-row items-center">
   {#if isRequired && !displayError}
-    <div transition:horizontalSlide>
+    <div transition:horizontalSlide>calden
       <img
         in:fade
         out:fade={{ duration: 50 }}
@@ -57,4 +57,5 @@
       />
     </div>
   {/if}
-</div>
+</div>    
+2
