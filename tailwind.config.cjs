@@ -5,21 +5,25 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          ultralight: "#ecfdf5",
-          light: "#059669",
-          medium: "#047857",
-          dark: "#065f46",
+          ultralight: "#bbd2ff",
+          light: "#90a8e4",
+          medium: "#6780b9",
+          dark: "#3e5a8f",
+          ultradark: "#0e3768"
         },
         secondary: {
-          ultralight: "#dbeafe",
-          light: "#2563eb",
-          medium: "#1d4ed8",
-          dark: "#1e40af",
+          ultralight: "#f8f5d3",
+          light: "#f4efb5",
+          medium: "#f0e996",
+          dark: "#ece376",
+          ultradark: "#e8dc54"
         },
-      },
-      backgroundImage: {
-        hero: "url(/hero.jpg)",
-        michelle: "url(/michelle.png)",
+        neutral: {
+          ultralight: "",
+          light: "",
+          medium: "",
+          dark: "#555555",
+        }
       },
       width: {
         md: "768px",

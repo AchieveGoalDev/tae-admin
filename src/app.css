@@ -46,3 +46,7 @@
 .mobile-hero-text {
   grid-column: 1/2;
 }
+
+body {
+  background-color: #f5f5f4;
+}
