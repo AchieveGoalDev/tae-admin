@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "../../app.css";
+    import "../../../app.css";
 
     import { fly } from "svelte/transition";
     import { onMount } from "svelte";
