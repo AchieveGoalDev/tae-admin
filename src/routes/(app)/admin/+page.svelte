@@ -1,4 +1,7 @@
 <script lang="ts">
+    import UnderConstruction from "$lib/placeholder/UnderConstruction.svelte";
 </script>
 
-<div>Hello</div>
+<main class="w-full h-full bg-stone-100">
+    <UnderConstruction />
+</main>

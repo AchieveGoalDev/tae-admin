@@ -7,6 +7,7 @@
 
     import SideNav from "$lib/navigation/SideNav.svelte";
     import Header from "$lib/header/Header.svelte";
+    import PanelBody from "$lib/panel/PanelBody.svelte";
 
     //TODO Add side nav drawer
     let sideNavIsOpen: boolean = true;
@@ -27,12 +28,13 @@
     <div
         class="grid gap-x-1 gap-y-0 grid-cols-[repeat(24, 1fr)] h-[100vh] bg-slate-100"
     >
+        <!--START SIDE NAV - LEFT HALF-->
         <aside
             in:fly={{ x: -100, duration: flyDuration - 150 }}
             class="
-    col-[1_/_span_1]
-    h-full
-    "
+                col-[1_/_span_1]
+                 h-full
+             "
         >
             {#if sideNavIsOpen}
                 <SideNav />
@@ -50,55 +52,47 @@
                 </div>
             {/if}
         </aside>
+        <!--END SIDE NAV - LEFT HALF-->
 
-        <div class="col-[2_/_span_23] h-full pt-[1rem] pb-[2rem]">
+        <!--START RIGHT HALF-->
+        <div
+            class="
+            col-[2_/_span_23]
+            grid
+            grid-cols-12
+            grid-rows-[repeat(24,.3fr)] 
+            h-full 
+            px-[2rem]
+            pt-[1rem] 
+            pb-[2rem]"
+        >
+            <!--START HEADER-->
             <div
-                class="grid grid-cols-12 mx-[2rem] grid-rows-[repeat(24,.3fr)] h-full"
+                in:fly={{ y: -50, duration: flyDuration }}
+                class="flex flex-col col-span-12 row-[span_1]"
             >
-                <div
-                    in:fly={{ y: -50, duration: flyDuration }}
-                    class="flex flex-col col-span-12 row-[span_1]"
-                >
-                    <Header bind:logged />
-                </div>
-                <div
-                    in:fly={{ y: 200, duration: flyDuration + 150 }}
-                    class="col-span-12 row-[span_23]"
-                >
-                    <div
-                        class="h-full grid grid-rows-[repeat(24, 1fr)] grid-cols-12"
-                    >
-                        <div
-                            class="row-[span_1] col-span-full flex flex-col-reverse"
-                        >
-                            <div class="flex">
-                                <div
-                                    class="bg-primary-ultralight p-[.5rem] mr-[.5rem]"
-                                >
-                                    Tab1
-                                </div>
-
-                                <div
-                                    class="bg-primary-light p-[.5rem] mr-[.5rem] shadow-inner"
-                                >
-                                    Tab2
-                                </div>
-
-                                <div
-                                    class="bg-primary-light p-[.5rem] mr-[.5rem] shadow-inner"
-                                >
-                                    Tab3
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="row-[span_23] col-span-full bg-primary-ultralight"
-                        >
-                            <slot />
-                        </div>
-                    </div>
-                </div>
+                <Header bind:logged />
             </div>
+            <!-- END HEADER-->
+
+            <!--START PANEL-->
+            <div
+                in:fly={{ y: 200, duration: flyDuration + 150 }}
+                class="
+                    h-full 
+                    col-span-12 
+                    row-[span_23]
+                    grid 
+                    grid-rows-[repeat(24, 1fr)] 
+                    grid-cols-12
+                    "
+            >
+                <PanelBody>
+                    <slot />
+                </PanelBody>
+            </div>
+            <!--END PANEL-->
         </div>
+        <!--END RIGHT HALF-->
     </div>
 {/if}
