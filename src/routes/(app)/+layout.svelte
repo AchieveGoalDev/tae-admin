@@ -1,14 +1,14 @@
 <script lang="ts">
-    import "../../app.css";
+  import "../../app.css";
 </script>
 
 <div
-    class="
+  class="
     h-[100vh] 
     w-[100vw] 
     bg-gradient-to-br 
     from-primary-ultradark 
-    to-primary-light 
+    to-primary-ultralight
     grid 
     grid-cols-1 
     grid-rows-1 
@@ -16,5 +16,5 @@
     items-center
     "
 >
-    <slot />
+  <slot />
 </div>

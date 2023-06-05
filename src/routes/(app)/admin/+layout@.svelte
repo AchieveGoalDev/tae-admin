@@ -1,62 +1,63 @@
 <script lang="ts">
-    import "../../../app.css";
+  import "../../../app.css";
 
-    import { fly } from "svelte/transition";
-    import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
+  import { fly } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
 
-    import SideNav from "$lib/navigation/SideNav.svelte";
-    import Header from "$lib/header/Header.svelte";
-    import PanelBody from "$lib/panel/PanelBody.svelte";
+  import { interfaceState } from "$lib/stores/interface";
 
-    //TODO Add side nav drawer
-    let sideNavIsOpen: boolean = true;
-    let loaded = false;
-    let logged = true;
-    let flyDuration = 500;
+  import SideNav from "$lib/navigation/SideNav.svelte";
+  import Header from "$lib/header/Header.svelte";
+  import PanelBody from "$lib/panel/PanelBody.svelte";
 
-    onMount(() => (loaded = true));
+  //TODO Add side nav drawer
+  let loaded = false;
+  let logged = true;
+  let flyDuration = 500;
 
-    $: if (!logged) {
-        goto("/", { replaceState: true });
-    }
-    //TODO make sidenav tray component
-    //TODO make a more fluid transition to tray by manipulating grid stuff
+  onMount(() => (loaded = true));
+
+  $: if (!logged) {
+    goto("/", { replaceState: true });
+  }
+  //TODO make sidenav tray component
+  //TODO make a more fluid transition to tray by manipulating grid stuff
 </script>
 
 {#if loaded}
-    <div
-        class="grid gap-x-1 gap-y-0 grid-cols-[repeat(24, 1fr)] h-[100vh] bg-slate-100"
-    >
-        <!--START SIDE NAV - LEFT HALF-->
-        <aside
-            in:fly={{ x: -100, duration: flyDuration - 150 }}
-            class="
+  <div
+    class="grid gap-x-1 gap-y-0 grid-cols-[repeat(24, 1fr)] h-[100vh] bg-neutral-ultralight transition-all dark:bg-dark-ultradark"
+  >
+    <!--START SIDE NAV - LEFT HALF-->
+    <aside
+      in:fly={{ x: -100, duration: flyDuration - 150 }}
+      class="
                 col-[1_/_span_1]
                  h-full
              "
-        >
-            {#if sideNavIsOpen}
-                <SideNav />
-            {:else}
-                <div
-                    in:fly={{
-                        x: -25,
-                        duration: flyDuration - 150,
-                        delay: 250,
-                    }}
-                    out:fly={{ x: -100, duration: flyDuration - 150 }}
-                    class="w-[3rem] h-full bg-primary-ultralight"
-                >
-                    <button on:click={() => (sideNavIsOpen = true)}>SHP</button>
-                </div>
-            {/if}
-        </aside>
-        <!--END SIDE NAV - LEFT HALF-->
-
-        <!--START RIGHT HALF-->
+    >
+      {#if $interfaceState.showNav}
+        <SideNav />
+      {:else}
         <div
-            class="
+          in:fly={{
+            x: -25,
+            duration: flyDuration - 150,
+            delay: 250,
+          }}
+          out:fly={{ x: -100, duration: flyDuration - 150 }}
+          class="w-[3rem] h-full bg-primary-dark transition-all dark:bg-dark-ultralight dark:text-neutral-light"
+        >
+          <button on:click={() => ($interfaceState.showNav = true)}>SHP</button>
+        </div>
+      {/if}
+    </aside>
+    <!--END SIDE NAV - LEFT HALF-->
+
+    <!--START RIGHT HALF-->
+    <div
+      class="
             col-[2_/_span_23]
             grid
             grid-cols-12
@@ -65,20 +66,20 @@
             px-[2rem]
             pt-[1rem] 
             pb-[2rem]"
-        >
-            <!--START HEADER-->
-            <div
-                in:fly={{ y: -50, duration: flyDuration }}
-                class="flex flex-col col-span-12 row-[span_1]"
-            >
-                <Header bind:logged />
-            </div>
-            <!-- END HEADER-->
+    >
+      <!--START HEADER-->
+      <div
+        in:fly={{ y: -50, duration: flyDuration }}
+        class="flex flex-col col-span-12 row-[span_1]"
+      >
+        <Header bind:logged />
+      </div>
+      <!-- END HEADER-->
 
-            <!--START PANEL-->
-            <div
-                in:fly={{ y: 200, duration: flyDuration + 150 }}
-                class="
+      <!--START PANEL-->
+      <div
+        in:fly={{ y: 200, duration: flyDuration + 150 }}
+        class="
                     h-full 
                     col-span-12 
                     row-[span_23]
@@ -86,13 +87,13 @@
                     grid-rows-[repeat(24, 1fr)] 
                     grid-cols-12
                     "
-            >
-                <PanelBody>
-                    <slot />
-                </PanelBody>
-            </div>
-            <!--END PANEL-->
-        </div>
-        <!--END RIGHT HALF-->
+      >
+        <PanelBody>
+          <slot />
+        </PanelBody>
+      </div>
+      <!--END PANEL-->
     </div>
+    <!--END RIGHT HALF-->
+  </div>
 {/if}
