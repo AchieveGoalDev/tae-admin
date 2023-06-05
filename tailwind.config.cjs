@@ -1,42 +1,51 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     fontSize: {
-      '2xs': "0.579rem",
+      "2xs": "0.579rem",
       xs: "0.694rem",
       sm: "0.833rem",
       base: "1rem",
       lg: "1.2rem",
       xl: "1.44rem",
-      '2xl': "1.728rem",
-      '3xl': "2.074rem",
-      '4xl': "2.488rem",
-      '5xl': "2.986rem",
-      '6xl': "3.583rem"
+      "2xl": "1.728rem",
+      "3xl": "2.074rem",
+      "4xl": "2.488rem",
+      "5xl": "2.986rem",
+      "6xl": "3.583rem",
     },
     extend: {
       colors: {
         primary: {
-          ultralight: "#bbd2ff",
-          light: "#90a8e4",
-          medium: "#6780b9",
-          dark: "#3e5a8f",
-          ultradark: "#0e3768"
+          ultralight: "#ABCBD8",
+          light: "#81B1C5",
+          medium: "#4B88A2",
+          dark: "#3A697E",
+          ultradark: "#2D5162",
         },
         secondary: {
-          ultralight: "#f8f5d3",
-          light: "#f4efb5",
-          medium: "#f0e996",
-          dark: "#ece376",
-          ultradark: "#e8dc54"
+          ultralight: "#FA9EAA",
+          light: "#F53D56",
+          medium: "#BB0A21",
+          dark: "#9B081C",
+          ultradark: "#610511",
         },
         neutral: {
-          ultralight: "",
-          light: "",
-          medium: "",
-          dark: "#555555",
-        }
+          ultralight: "#F8F6F1",
+          light: "#F2EEE3",
+          medium: "#E9E2D0",
+          dark: "#E5DDC8",
+          ultradark: "#DED4BA",
+        },
+        dark: {
+          ultralight: "#3B3D40",
+          light: "#313335",
+          medium: "#252627",
+          dark: "#1E1F20",
+          ultradark: "#141415",
+        },
       },
       width: {
         md: "768px",
