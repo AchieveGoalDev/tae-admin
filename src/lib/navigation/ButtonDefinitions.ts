@@ -6,29 +6,34 @@ export type SideNavButtonProps = {
 
 export const sideNavButtons: SideNavButtonProps[] = [
     {
-        icon: "#",
+        icon: "material-symbols:school",
         text: "学生",
-        link: "#",
+        link: "/student",
     },
     {
-        icon: "#",
+        icon: "bxs:party",
         text: "イベント",
-        link: "#",
+        link: "/event",
     },
     {
-        icon: "#",
+        icon: "fa-solid:school",
         text: "キャンパス",
-        link: "#",
+        link: "/campus",
     },
     {
-        icon: "#",
+        icon: "mdi:teacher",
         text: "先生",
-        link: "#",
+        link: "/teacher",
     },
     {
-        icon: "#",
+        icon: "mingcute:schedule-fill",
         text: "授業",
-        link: "リポート",
+        link: "/class",
+    },
+    {
+        icon: "bxs:report",
+        text: "リポート",
+        link: "/report",
     },
 
 ]

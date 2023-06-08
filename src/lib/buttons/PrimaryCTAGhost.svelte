@@ -1,7 +1,6 @@
 <button
     on:click|preventDefault={() => console.log("bleep")}
     class="
-    flex
     font-bold 
     p-2 
     hover:text-secondary-ultralight 

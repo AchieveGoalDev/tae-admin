@@ -23,12 +23,8 @@
     <h5 class="">管理ダッシュボード</h5>
   </div>
   <nav class="h-1/3 flex flex-col justify-around my-[.5rem]">
-    {#each sideNavButtons as button, i}
-      {#if i === 3}
-        <SideNavButton isPage={true} props={button} />
-      {:else}
-        <SideNavButton isPage={false} props={button} />
-      {/if}
+    {#each sideNavButtons as button}
+      <SideNavButton props={button} />
     {/each}
   </nav>
   <div
