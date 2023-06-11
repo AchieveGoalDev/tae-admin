@@ -5,7 +5,13 @@
 </script>
 
 <div
-    class="flex font-dark-dark text-4xl h-full w-full justify-center items-center"
+    class="
+        flex 
+        text-dark-dark 
+        dark:text-neutral-light 
+        text-4xl h-full 
+        w-full justify-center 
+        items-center"
 >
     <iconify-icon icon={`${icon}`} />
 </div>

@@ -96,7 +96,9 @@
                     "
             >
                 <PanelBody>
-                    <div class="bg-neutral-dark h-full w-full overflow-hidden">
+                    <div
+                        class="bg-neutral-dark dark:bg-dark-dark h-full w-full overflow-hidden"
+                    >
                         {#key data.pathname}
                             <div
                                 class="h-full w-full svelte-transition-container"

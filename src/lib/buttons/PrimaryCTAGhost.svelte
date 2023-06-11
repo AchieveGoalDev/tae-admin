@@ -3,7 +3,7 @@
     class="
     font-bold 
     p-2 
-    hover:text-secondary-ultralight 
+    hover:text-neutral-light 
     text-xl 
     hover:bg-primary-ultradark 
     outline outline-sold 

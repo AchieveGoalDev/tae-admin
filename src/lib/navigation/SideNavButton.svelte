@@ -27,8 +27,7 @@
             translate-x-0
             transition-all
             ease-in-out
-            dark:bg-dark-ultralight
-            dark:hover:bg-secondary-dark 
+            dark:bg-neutral-medium 
             rounded-r-lg
             shadow-lg
             items-center
