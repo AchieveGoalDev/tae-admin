@@ -1,37 +1,56 @@
 export type TabDef = {
-    text: string,
-    link: string,
-    icon: string
-}
+  text: string;
+  tag: string;
+  icon: string;
+  isDefault: boolean;
+};
 
 export type TabIndex = {
-    event: TabDef[],
-}
+  event: TabDef[];
+  uc: TabDef[];
+};
 
 const eventManageGakunai: TabDef = {
-    text: "学内イベント管理",
-    link: "/gakunaievent",
-    icon: "material-symbols:folder-managed"
-}
+  text: "学内イベント管理",
+  tag: "学内管理",
+  icon: "material-symbols:folder-managed",
+  isDefault: true,
+};
 
-const eventManageGakugai = {
-    text: "学外イベント管理",
-    link: "/gakugaievent",
-    icon: "material-symbols:folder-managed-outline"
-}
+const eventManageGakugai: TabDef = {
+  text: "学外イベント管理",
+  tag: "学外管理",
+  icon: "material-symbols:folder-managed-outline",
+  isDefault: false,
+};
 
-const eventApplicantGakunai = {
-    text: "学内申込管理",
-    link: "/gakunaiapplication",
-    icon: "ph:stamp-fill"
-}
+const eventApplicantGakunai: TabDef = {
+  text: "学内申込管理",
+  tag: "学内申込",
+  icon: "ph:stamp-fill",
+  isDefault: false,
+};
 
-const eventApplicantGakugai = {
-    text: "学外申込管理",
-    link: "/gakugaiapplication",
-    icon: "ph:stamp-fill",
-}
+const eventApplicantGakugai: TabDef = {
+  text: "学外申込管理",
+  tag: "学外申込",
+  icon: "ph:stamp-fill",
+  isDefault: false,
+};
+
+const underConstruction: TabDef = {
+  text: "準備中",
+  tag: "準備中",
+  icon: "material-symbols:construction",
+  isDefault: true,
+};
 
 export const tabIndex: TabIndex = {
-    event: [eventManageGakunai, eventManageGakugai, eventApplicantGakunai, eventApplicantGakugai]
-}
+  event: [
+    eventManageGakunai,
+    eventManageGakugai,
+    eventApplicantGakunai,
+    eventApplicantGakugai,
+  ],
+  uc: [underConstruction],
+};

@@ -2,7 +2,7 @@
 </script>
 
 <div
-    class="
+  class="
         h-full
         w-full
         flex
@@ -11,8 +11,6 @@
         justify-center
     "
 >
-    <p class="font-bold text-5xl">準備中</p>
-    <p class="text-3xl">
-        申し訳ございません。こちらのページはご利用できません。。
-    </p>
+  <p class="font-bold text-5xl">準備中</p>
+  <p class="text-3xl">申し訳ございません。こちらのページはご利用できません。</p>
 </div>

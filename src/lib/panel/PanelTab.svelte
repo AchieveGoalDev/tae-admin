@@ -1,25 +1,51 @@
 <script lang="ts">
-    import type { TabDef } from "$lib/panel/TabDefs";
-    import { page } from "$app/stores";
+  import type { TabDef } from "$lib/panel/TabDefs";
+  import { interfaceState } from "$lib/stores/interface";
 
-    import "iconify-icon";
+  import { page } from "$app/stores";
 
-    export let props: TabDef;
-    let isCurrent: boolean;
+  let currentPath: string;
 
-    console.log($page);
+  import "iconify-icon";
 
-    $: if ($page.url.pathname === "/event") {
-        isCurrent = true;
+  export let props: TabDef;
+
+  const setCurrentPath = (pathname: string) => {
+    if (pathname === "/admin") {
+      currentPath = "student";
+    } else {
+      currentPath = pathname.slice(7);
     }
+
+    console.log(currentPath);
+  };
+
+  const updateTab = (currentPath: string, tag: string) => {
+    //@ts-ignore
+    $interfaceState.tab[currentPath] = tag;
+  };
+
+  const checkCurrentTab = (tag: string, isDefault: boolean) => {
+    if (
+      $interfaceState.tab[currentPath] === tag ||
+      ($interfaceState.tab[currentPath] === "default" && isDefault)
+    ) {
+      return true;
+    }
+  };
+
+  $: setCurrentPath($page.url.pathname);
+
+  //TODO have tabbing tied only to styles and not make tabs rerender everytime a tab is changed
+  //TODO have active property for bg color on tabs
+  //TODO have tab button extend to full tab size
+  //TODO tabs stack away on page switch
 </script>
 
-{#if !isCurrent}
-    <li
-        class="
+{#if !checkCurrentTab(props.tag, props.isDefault)}
+  <li
+    class="
         bg-primary-ultradark p-[.5rem]
-        flex
-        items-center
         p-3
         mr-2
         text-lg
@@ -32,8 +58,35 @@
         hover:bg-secondary-dark
         active:bg-primary-dark
     "
+  >
+    <button
+      on:click={() => {
+        updateTab(currentPath, props.tag);
+      }}
+      class={"flex items-center"}
     >
-        <iconify-icon icon={props.icon} class="mr-2" />
-        <h4 class="text-md font^bold">{props.text}</h4>
-    </li>
+      <iconify-icon icon={props.icon} class="mr-2" />
+      <h4 class="text-md font^bold">{props.text}</h4>
+    </button>
+  </li>
+{:else}
+  <li
+    class="
+    flex
+    items-center
+    bg-primary-dark 
+    p-[.5rem]
+    p-3
+    mr-2
+    text-lg
+    font-bold
+    select-none
+    rounded-t-md
+    dark:bg-dark-ultralight
+    transition-all
+"
+  >
+    <iconify-icon icon={props.icon} class="mr-2" />
+    <h4 class="text-md font^bold">{props.text}</h4>
+  </li>
 {/if}

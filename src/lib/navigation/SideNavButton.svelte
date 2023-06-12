@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { interfaceState } from "$lib/stores/interface";
 
   import type { SideNavButtonProps } from "$lib/navigation/ButtonDefinitions";
   import NavigationIcon from "$lib/icons/NavigationIcon.svelte";
@@ -8,8 +9,10 @@
 
   export let props: SideNavButtonProps;
 
-  const focusNavigate = (icon: SideNavButtonProps) => {
-    goto("/admin" + icon.link, { replaceState: false });
+  const focusNavigate = (props: SideNavButtonProps) => {
+    $interfaceState.page = props.link.slice(1);
+    goto("/admin" + props.link, { replaceState: false });
+    console.log($interfaceState);
   };
 
   console.log(`/admin${props.link}` === $page.url.pathname);
@@ -61,7 +64,9 @@
             shadow-lg
             items-center
             active:bg-primary-light
-            active:text-dark-ultra
+            active:text-dark-dark
+            dark:active:bg-neutral-dark
+            dark:active:text-dark-dark
         "
   >
     <div class="flex select-none">
