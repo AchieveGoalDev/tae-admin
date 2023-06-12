@@ -13,6 +13,7 @@
         bg-primary-dark
         dark:bg-dark-ultralight
         p-[1rem]
+        shadow-xlg
         "
 >
   <slot />
