@@ -9,13 +9,13 @@
 
   export let props: SideNavButtonProps;
 
+  let update = false;
+
   const focusNavigate = (props: SideNavButtonProps) => {
     $interfaceState.page = props.link.slice(1);
-    goto("/admin" + props.link, { replaceState: false });
-    console.log($interfaceState);
   };
 
-  console.log(`/admin${props.link}` === $page.url.pathname);
+  $: goto("/admin/" + $interfaceState.page, { replaceState: false });
 </script>
 
 {#if $page.url.pathname === `/admin${props.link}`}
