@@ -1,11 +1,5 @@
 <script lang="ts">
-
+    import UnderConstruction from "$lib/placeholder/UnderConstruction.svelte";
 </script>
 
-<h1>
-    学外申込
-</h1>
-
-<h2>
-
-</h2>
+<UnderConstruction />

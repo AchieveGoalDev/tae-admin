@@ -1,7 +1,5 @@
 <script lang="ts">
-
+    import UnderConstruction from "$lib/placeholder/UnderConstruction.svelte";
 </script>
 
-<h1>
-    学内管理
-</h1>
+<UnderConstruction />
