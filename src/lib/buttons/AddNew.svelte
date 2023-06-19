@@ -1,16 +1,16 @@
 <script lang="ts">
-    //@ts-nocheck
-    import "iconify-icon";
+  //@ts-nocheck
+  import "iconify-icon";
 
-    export let addFunction;
+  export let addFunction;
 </script>
 
 <button
-    on:click={() => addFunction()}
-    class="
+  on:click={() => addFunction()}
+  class="
         bg-emerald-700
         hover:bg-emerald-600
-        text-neutral-medium
+        text-neutral-ultralight
         text-2xl
         rounded-full
         w-[2.5rem]
@@ -28,7 +28,8 @@
         active:shadow-[.05rem_.1rem_.1rem_hsl(43deg_20%_30%)]
         transition-all
         active:translate-y-[.15rem]
+        hover:-translate-y-[.1rem]
     "
 >
-    <iconify-icon icon="ph:plus-bold" />
+  <iconify-icon icon="ph:plus-bold" />
 </button>

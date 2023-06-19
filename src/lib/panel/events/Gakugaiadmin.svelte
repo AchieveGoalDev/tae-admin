@@ -1,37 +1,37 @@
 <script lang="ts">
-    import AddNew from "$lib/buttons/AddNew.svelte";
+  import AddNew from "$lib/buttons/AddNew.svelte";
+  import TableHeader from "$lib/panel/tables/TableHeader.svelte";
+  import TableRow from "$lib/panel/tables/TableRow.svelte";
 
-    const click = () => {
-        console.log("click");
-    };
+  import "iconify-icon";
+
+  const click = () => {
+    console.log("click");
+  };
 </script>
 
-<h1
-    class="
-    pl-2
-    pt-2
-    font-bold
-    text-2xl 
-    text-dark-dark "
->
-    学外イベント管理
-</h1>
-<div class="w-full">
-    <table class="bg-white w-full">
-        <thead>
-            <th>講座名</th>
-            <th>開催日</th>
-            <th>申込者</th>
-            <th>講座の詳細</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>テスト講座</td>
-                <td>07/15/2023</td>
-                <td>25名</td>
-                <td>拡大</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="w-full grid grid-cols-3 items-center justify-center">
+  <div
+    class="col-span-1 mx-auto flex flex-row items-center bg-neutral-ultralight h-[2rem] shadow-sm w-[15rem]"
+  >
+    <iconify-icon icon="ic:outline-search" class="text-xl mr-1" />
+    <input class="bg-neutral-ultralight focus:outline-none" />
+  </div>
+
+  <h2 class="col-span-1 mx-auto text-3xl font-bold">学外管理</h2>
+
+  <div class=" col-span-1 justify-self-end p-1 mx-auto">
+    <AddNew addFunction={click} />
+  </div>
 </div>
-<AddNew addFunction={click} />
+
+<div class="bg-white shadow-lg mx-2 rounded-md">
+  <TableHeader />
+  <TableRow />
+  <TableRow />
+  <TableRow />
+  <TableRow />
+  <TableRow />
+  <TableRow />
+  <TableRow />
+</div>
