@@ -1,12 +1,21 @@
 <script lang="ts">
+  import { PUBLIC_API_GATEWAY_URL } from "$env/static/public";
   import AddNew from "$lib/buttons/AddNew.svelte";
   import TableHeader from "$lib/panel/tables/TableHeader.svelte";
   import TableRow from "$lib/panel/tables/TableRow.svelte";
+  import { handleDBPut } from "$lib/functions/postToDb";
 
   import "iconify-icon";
 
+  console.log(PUBLIC_API_GATEWAY_URL);
+
   const click = () => {
-    console.log("click");
+    handleDBPut(testData, PUBLIC_API_GATEWAY_URL + "/events");
+  };
+
+  let testData = {
+    name: "testEvent",
+    eventDate: "tomorrow",
   };
 </script>
 

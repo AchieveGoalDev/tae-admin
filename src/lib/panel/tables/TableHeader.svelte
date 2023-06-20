@@ -16,6 +16,6 @@
 "
 >
   {#each cells as cell}
-    <p class="grid col-span-1">{cell}</p>
+    <p class="grid col-span-1 justify-center">{cell}</p>
   {/each}
 </div>

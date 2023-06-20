@@ -1,7 +1,6 @@
 <script lang="ts">
-  let cells = ["stuff", "stuff", "stuff", "stuff"];
-
   import { slide } from "svelte/transition";
+  let cells = ["stuff", "stuff", "stuff", "stuff"];
 </script>
 
 <div
