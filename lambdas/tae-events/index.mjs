@@ -1,19 +1,19 @@
-import DynamoDB from "@aws-sdk/client-dynamodb"
-import { marshall, unmarshall } from "@aws-sdk/client-dynamodb"
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 
 function createGNEvent(payload) {
     let tableItem = {
         TableName: "tae-events",
         Item: marshall({
             PK: "GAKUNAI",
-            SK: Date.now(),
+            SK: "TEST",
             name: payload.name,
             date: payload.date,
             applicants: 0,
         })
     }
 
-    return tableItem
+    return tableItem;
 }
 
 
@@ -29,6 +29,8 @@ export const handler = async (event) => {
     }
 
     const dbres = await client.putItem(createGNEvent(JSON.parse(event.body.payload)));
+
+
 
     const response = {
         headers: resHeaders,
