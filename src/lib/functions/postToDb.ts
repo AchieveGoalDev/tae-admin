@@ -1,6 +1,6 @@
 export async function handleDBPut(data: any, url: string) {
     try {
-        const response = await (fetch(url), {
+        const response = await fetch(url, {
             mode: "cors",
             method: "post",
             cache: "no-cache",
