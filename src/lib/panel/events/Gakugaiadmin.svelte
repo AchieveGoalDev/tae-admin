@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="bg-white shadow-lg mx-2 rounded-md">
+<div class="bg-white shadow-lg mx-2 rounded-md ">
   <TableHeader />
   <TableRow />
   <TableRow />
@@ -49,7 +49,11 @@
   <TableRow />
   <TableRow />
 
-  <Swappable value={"jp"}>
-    <InlineCalendar />
-  </Swappable>
+  <div class="flex justify-center">
+    <div class="shadow-md my-3">
+      <Swappable value={"jp"}>
+        <InlineCalendar />
+      </Swappable>
+    </div>
+  </div>
 </div>
