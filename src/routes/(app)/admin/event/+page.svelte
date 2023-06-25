@@ -16,7 +16,7 @@
 </script>
 
 <main
-  class="w-full h-[500px] bg-neutral-light dark:bg-dark-ultradark dark:text-neutral-light overflow-y-scroll"
+  class="w-full h-full bg-neutral-light dark:bg-dark-ultradark dark:text-neutral-light overflow-y-scroll"
 >
   {#if $interfaceState.tab.event === "default"}
     <svelte:component this={panels.学内管理} />
