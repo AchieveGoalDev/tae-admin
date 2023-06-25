@@ -3,9 +3,14 @@
   import AddNew from "$lib/buttons/AddNew.svelte";
   import TableHeader from "$lib/panel/tables/TableHeader.svelte";
   import TableRow from "$lib/panel/tables/TableRow.svelte";
-  import { handleDBPut } from "$lib/functions/postToDb";
+  import { handleDBPut } from "$lib/api/event/postToDb";
+  import { InlineCalendar, Swappable } from "svelte-calendar";
+  import "dayjs/locale/ja.js";
+  import dayjs from "dayjs";
 
   import "iconify-icon";
+
+  $: dayjs.locale("ja");
 
   console.log(PUBLIC_API_GATEWAY_URL);
 
@@ -43,4 +48,8 @@
   <TableRow />
   <TableRow />
   <TableRow />
+
+  <Swappable value={"jp"}>
+    <InlineCalendar />
+  </Swappable>
 </div>
