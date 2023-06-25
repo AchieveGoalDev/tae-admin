@@ -1,5 +1,7 @@
 <script lang="ts">
   import { PUBLIC_API_GATEWAY_URL } from "$env/static/public";
+  import { slide } from "svelte/transition";
+
   import AddNew from "$lib/buttons/AddNew.svelte";
   import TableHeader from "$lib/panel/tables/TableHeader.svelte";
   import TableRow from "$lib/panel/tables/TableRow.svelte";
@@ -24,7 +26,10 @@
   };
 </script>
 
-<div class="w-full grid grid-cols-3 items-center justify-center">
+<div
+  transition:slide
+  class="w-full grid grid-cols-3 items-center justify-center"
+>
   <div
     class="col-span-1 mx-auto flex flex-row items-center bg-neutral-ultralight h-[2rem] shadow-sm w-[15rem]"
   >
@@ -39,7 +44,7 @@
   </div>
 </div>
 
-<div class="bg-white shadow-lg mx-2 rounded-md ">
+<div transition:slide class="bg-white shadow-lg mx-2 rounded-md ">
   <TableHeader />
   <TableRow />
   <TableRow />
