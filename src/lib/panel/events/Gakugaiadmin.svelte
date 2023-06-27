@@ -1,5 +1,6 @@
 <script lang="ts">
   import { PUBLIC_API_GATEWAY_URL } from "$env/static/public";
+  import ModalWrapper from "$lib/modals/ModalWrapper.svelte";
   import { slide } from "svelte/transition";
 
   import AddNew from "$lib/buttons/AddNew.svelte";
@@ -12,12 +13,15 @@
 
   import "iconify-icon";
 
+  let showDialog = false;
+
   $: dayjs.locale("ja");
 
   console.log(PUBLIC_API_GATEWAY_URL);
 
-  const click = () => {
-    handleDBPut(testData, PUBLIC_API_GATEWAY_URL + "/events");
+  const showModal = () => {
+    showDialog = true;
+    //handleDBPut(testData, PUBLIC_API_GATEWAY_URL + "/events");
   };
 
   let testData = {
@@ -40,7 +44,7 @@
   <h2 class="col-span-1 mx-auto text-3xl font-bold">学外管理</h2>
 
   <div class=" col-span-1 justify-self-end p-1 mx-auto">
-    <AddNew addFunction={click} />
+    <AddNew addFunction={showModal} />
   </div>
 </div>
 
@@ -62,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<ModalWrapper bind:showDialog />
