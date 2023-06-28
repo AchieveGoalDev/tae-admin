@@ -1,6 +1,6 @@
 <script lang="ts">
     import HeaderIcon from "$lib/icons/HeaderIcon.svelte";
-    import Select from "$lib/input/Select.svelte";
+    import Select from "$lib/forms/input/Select.svelte";
     import PrimaryCtaGhost from "$lib/buttons/PrimaryCTAGhost.svelte";
 </script>
 
