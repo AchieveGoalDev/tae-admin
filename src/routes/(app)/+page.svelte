@@ -1,7 +1,25 @@
 <script lang="ts">
+    import { PUBLIC_API_GATEWAY_URL } from "$env/static/public";
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
     import { goto } from "$app/navigation";
+
+    import { handleDBPut } from "$lib/api/event/postToDb";
+
+    async function login() {
+        const testData = {
+            password: "hummana",
+        };
+
+        const response = await handleDBPut(
+            testData,
+            PUBLIC_API_GATEWAY_URL + "/auth"
+        );
+
+        console.log(JSON.stringify(response));
+
+        logged = true;
+    }
 
     let loaded = false;
 
@@ -29,6 +47,6 @@
             <div class="col-start-1">パスワード</div>
             <div class="col-start-2"><input /></div>
         </div>
-        <button on:click={() => (logged = true)}>Login</button>
+        <button on:click={login}>Login</button>
     </dialog>
 {/if}
