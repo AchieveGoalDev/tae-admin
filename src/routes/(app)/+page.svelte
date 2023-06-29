@@ -4,14 +4,14 @@
     import { fly } from "svelte/transition";
     import { goto } from "$app/navigation";
 
-    import { handleDBPut } from "$lib/api/event/postToDb";
+    import { handleAPIGet } from "$lib/api/event/postToDb";
 
     async function login() {
         const testData = {
             password: "hummana",
         };
 
-        const response = await handleDBPut(
+        const response = await handleAPIGet(
             testData,
             PUBLIC_API_GATEWAY_URL + "/auth"
         );
