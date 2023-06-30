@@ -2,11 +2,13 @@
     export let parameters: any;
     export let handler: any;
     export let isDisabled = false;
+
+    console.log(...parameters);
 </script>
 
 <button
     disabled={isDisabled}
-    on:click|preventDefault={() => handler([...parameters])}
+    on:click|preventDefault={() => handler(...parameters)}
     class="
     font-bold 
     p-2 
