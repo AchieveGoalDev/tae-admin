@@ -27,13 +27,11 @@
 
     function validateUserData(data: NewUser) {
         let errors: any = [];
-        let isValid: boolean;
         let values = Object.values(data);
         let keys = Object.values(data);
 
         values.forEach((value, i) => {
             if (value === null) {
-                isValid = false;
                 errors.push([keys[i], value]);
             }
         });
@@ -99,11 +97,12 @@
         </div>
 
         <PrimaryCtaGhost
-            handler={handleAPIPost(
+            parameters={[
                 userData,
-                PUBLIC_API_GATEWAY_URL + registerUserEndpoint
-            )}
-            isDisabled={errors.length > 0}
+                PUBLIC_API_GATEWAY_URL + registerUserEndpoint,
+            ]}
+            handler={handleAPIPost}
+            isDisabled={false}
         />
     </div>
     {JSON.stringify(errors)}
