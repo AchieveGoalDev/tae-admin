@@ -9,7 +9,7 @@
 
 <button
     disabled={isDisabled}
-    on:click|preventDefault={handler}
+    on:click|preventDefault={() => handler}
     class="
     font-bold 
     p-2 
