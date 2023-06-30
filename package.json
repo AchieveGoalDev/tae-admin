@@ -50,6 +50,7 @@
 		"bson": "^4.7.0",
 		"d3-interpolate": "^3.0.1",
 		"dayjs": "^1.11.8",
+		"http-errors": "^2.0.0",
 		"iconify-icon": "^1.0.7",
 		"svelte-scrollto": "^0.2.0"
 	}

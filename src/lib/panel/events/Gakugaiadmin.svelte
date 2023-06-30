@@ -6,7 +6,7 @@
   import AddNew from "$lib/buttons/AddNew.svelte";
   import TableHeader from "$lib/panel/tables/TableHeader.svelte";
   import TableRow from "$lib/panel/tables/TableRow.svelte";
-  import { handleDBPut } from "$lib/api/event/postToDb";
+  import { handleAPIPost } from "$lib/api/RESTFunctions";
   import { InlineCalendar, Swappable } from "svelte-calendar";
   import "dayjs/locale/ja.js";
   import dayjs from "dayjs";

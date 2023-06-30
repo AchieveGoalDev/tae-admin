@@ -1,4 +1,4 @@
-export async function handleDBPut(data: any, url: string) {
+export async function handleAPIPost(data: any, url: string) {
     try {
         const response = await fetch(url, {
             mode: "cors",
