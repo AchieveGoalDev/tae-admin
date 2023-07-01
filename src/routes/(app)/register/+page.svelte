@@ -4,6 +4,7 @@
 
     import { handleAPIPost } from "$lib/api/RESTFunctions";
     import PrimaryCtaGhost from "$lib/buttons/PrimaryCTAGhost.svelte";
+    import { hashPassword } from "$lib/api/auth/hashPassword";
 
     let registerUserEndpoint = "/register";
 
@@ -24,6 +25,7 @@
     };
 
     let errors: any;
+    let unhashedPass = "";
 
     function validateUserData(data: NewUser) {
         let errors: any = [];
@@ -40,6 +42,7 @@
     }
 
     $: errors = validateUserData(userData);
+    $: userData.password = hashPassword(unhashedPass);
 </script>
 
 <dialog
@@ -92,7 +95,7 @@
             <input
                 class="shadow-md"
                 name="パスワード"
-                bind:value={userData.password}
+                bind:value={unhashedPass}
             />
         </div>
 
