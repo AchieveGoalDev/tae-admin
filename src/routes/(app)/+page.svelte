@@ -3,28 +3,24 @@
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
     import { goto } from "$app/navigation";
-
-    import { handleAPIPost } from "$lib/api/RESTFunctions";
-
-    async function login() {
-        const testData = {
-            password: "hummana",
-        };
-
-        const response = await handleAPIPost(
-            testData,
-            PUBLIC_API_GATEWAY_URL + "/auth"
-        );
-
-        console.log(JSON.stringify(response));
-
-        logged = true;
-    }
+    import { authorize } from "$lib/api/auth/authorize";
 
     let loaded = false;
 
-    //TODO placeholder login function/ Make real login functionality
     let logged = false;
+
+    let email: string;
+    let password: string;
+
+    let showPass = false;
+
+    function onPasswordInput(e: Event) {
+        const target = e.target as HTMLInputElement;
+
+        if (target) {
+            password = target.value;
+        }
+    }
 
     onMount(() => (loaded = true));
 
@@ -42,11 +38,23 @@
             <h3 class="text-3xl font-bold">ログイン</h3>
         </div>
         <div class="grid grid-cols-2">
-            <div class="col-start-1 justify-right"><span>ユーザー名</span></div>
-            <div class="col-start-2"><input /></div>
+            <div class="col-start-1 justify-right"><span>メール</span></div>
+            <div class="col-start-2">
+                <input type="text" bind:value={email} />
+            </div>
             <div class="col-start-1">パスワード</div>
-            <div class="col-start-2"><input /></div>
+            <div class="col-start-2">
+                <span
+                    ><input
+                        type={showPass ? "text" : "password"}
+                        on:input={onPasswordInput}
+                    />
+                    <button on:click={() => (showPass = !showPass)}>
+                        {showPass ? "Hide" : "Show"}
+                    </button>
+                </span>
+            </div>
         </div>
-        <button on:click={login}>Login</button>
+        <button on:click={authorize(email, password)}>Login</button>
     </dialog>
 {/if}

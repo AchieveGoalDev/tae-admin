@@ -52,6 +52,7 @@
 		"dayjs": "^1.11.8",
 		"http-errors": "^2.0.0",
 		"iconify-icon": "^1.0.7",
+		"js-sha256": "^0.9.0",
 		"svelte-scrollto": "^0.2.0"
 	}
 }
