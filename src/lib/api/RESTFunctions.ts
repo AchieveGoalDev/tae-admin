@@ -3,7 +3,7 @@ export async function handleAPIPost(data: any, url: string) {
         const response = await fetch(url, {
             mode: "cors",
             method: "post",
-            cache: "no-cache",
+            cache: "default",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json"

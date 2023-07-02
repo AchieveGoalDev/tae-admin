@@ -1,13 +1,9 @@
-import { createHash } from "node:crypto"
-
-function sha256(toEncrypt, salt){
-    createHash('sha3-256').update(toEncrypt + salt).digest('hex')
-}
+import { passwordAuth } from './passwordAuth.mjs';
 
 export const handler = async (event) => {
     const origin = event.headers.origin;
 
-    const hashed = sha256(event.password + process.env.SALT)
+    const payload = JSON.parse(event.body)
 
     let resHeaders = {
         "Access-Control-Allow-Credentials": "true",
@@ -16,11 +12,12 @@ export const handler = async (event) => {
         "Access-Control-Allow-Methods": "GET,POST, OPTIONS",
     }
 
+    let authResponse = await passwordAuth(payload.email, payload.password)
 
     const response = {
         headers: resHeaders,
         statusCode: 200,
-        body: hashed
+        body: JSON.stringify(authResponse)
     }
 
     return response
