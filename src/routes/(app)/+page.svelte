@@ -65,28 +65,33 @@
                 class="col-span-2 px-auto flex flex-col h-full items-center justify-center"
             >
                 <h2 class="text-3xl text-dark-medium mb-[10%]">ログイン</h2>
-                <div class="flex flex-col mx-auto">
-                    <label class="font-bold" for="mail">メール</label>
-                    <input
-                        class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-light"
-                        type="text"
-                        bind:value={email}
-                        name="mail"
-                    />
-                </div>
-                <div class="flex flex-col mx-auto mt-4">
-                    <label class="font-bold" for="password">パスワード</label>
-                    <input
-                        class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-ultralight"
-                        type="password"
-                        bind:value={password}
-                        name="password"
-                    />
-                </div>
-                <button
-                    class="w-1/2 mt-[10%] bg-primary-dark hover:bg-primary-medium font-bold transitions transition-all flex py-2 px-5  mx-auto rounded-md text-white justify-center"
-                    on:click={authorize(email, password)}>ログイン</button
-                >
+                <form>
+                    <div class="flex flex-col mx-auto">
+                        <label class="font-bold" for="mail">メール</label>
+                        <input
+                            class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-light"
+                            type="text"
+                            bind:value={email}
+                            name="mail"
+                        />
+                    </div>
+                    <div class="flex flex-col mx-auto mt-4">
+                        <label class="font-bold" for="password"
+                            >パスワード</label
+                        >
+                        <input
+                            class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-ultralight"
+                            type="password"
+                            bind:value={password}
+                            name="password"
+                        />
+                    </div>
+                    <button
+                        class="w-1/2 mt-[10%] bg-primary-dark hover:bg-primary-medium font-bold transitions transition-all flex py-2 px-5  mx-auto rounded-md text-white justify-center"
+                        on:click|preventDefault={authorize(email, password)}
+                        >ログイン</button
+                    >
+                </form>
             </div>
         </div>
     </dialog>
