@@ -1,4 +1,5 @@
 <script lang="ts">
+    //@ts-nocheck
     import { PUBLIC_API_GATEWAY_URL } from "$env/static/public";
     import { onMount } from "svelte";
     import { fly } from "svelte/transition";
@@ -32,29 +33,61 @@
 {#if loaded}
     <dialog
         in:fly={{ y: 50, duration: 1000 }}
-        class="bg-gradient-to-b from-stone-50 to-stone-100 w-1/3 h-2/3 grid grid-rows-3 grid-cols-1 shadow-lg"
+        class="bg-neutral-light 
+        w-2/3 
+        h-2/3 
+        grid 
+        gap-none
+        shadow-lg 
+        outline 
+        outline-4 
+        outline-dark-light
+        font-noto
+        p-0
+        "
     >
-        <div class="row-span-1 flex items-center justify-center">
-            <h3 class="text-3xl font-bold">ログイン</h3>
-        </div>
-        <div class="grid grid-cols-2">
-            <div class="col-start-1 justify-right"><span>メール</span></div>
-            <div class="col-start-2">
-                <input type="text" bind:value={email} />
-            </div>
-            <div class="col-start-1">パスワード</div>
-            <div class="col-start-2">
-                <span
-                    ><input
-                        type={showPass ? "text" : "password"}
-                        on:input={onPasswordInput}
+        <div class="items-center justify-center grid grid-cols-3">
+            <div class=" col-span-1 bg-secondary-medium h-full w-full">
+                <div class="flex flex-col h-full pt-[50%]">
+                    <img
+                        class="p-2 rounded-full w-1/2 mx-auto bg-white m-3"
+                        src="https://dh63x6re274g0.cloudfront.net/images/TAENavLogo.svg"
+                        alt="Toyo Achieve English ロゴ"
                     />
-                    <button on:click={() => (showPass = !showPass)}>
-                        {showPass ? "Hide" : "Show"}
-                    </button>
-                </span>
+                    <h1
+                        class="text-2xl font-black text-neutral-ultralight mx-auto"
+                    >
+                        管理ダッシュボード
+                    </h1>
+                </div>
+            </div>
+            <div
+                class="col-span-2 px-auto flex flex-col h-full items-center justify-center"
+            >
+                <h2 class="text-3xl text-dark-medium mb-[10%]">ログイン</h2>
+                <div class="flex flex-col mx-auto">
+                    <label class="font-bold" for="mail">メール</label>
+                    <input
+                        class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-light"
+                        type="text"
+                        bind:value={email}
+                        name="mail"
+                    />
+                </div>
+                <div class="flex flex-col mx-auto mt-4">
+                    <label class="font-bold" for="password">パスワード</label>
+                    <input
+                        class="mt-4 rounded-sm p-2 bg-neutral-ultralight shadow-sm text-dark-ultralight"
+                        type="password"
+                        bind:value={password}
+                        name="password"
+                    />
+                </div>
+                <button
+                    class="w-1/2 mt-[10%] bg-primary-dark hover:bg-primary-medium font-bold transitions transition-all flex py-2 px-5  mx-auto rounded-md text-white justify-center"
+                    on:click={authorize(email, password)}>ログイン</button
+                >
             </div>
         </div>
-        <button on:click={authorize(email, password)}>Login</button>
     </dialog>
 {/if}

@@ -16,6 +16,9 @@ module.exports = {
       "5xl": "2.986rem",
       "6xl": "3.583rem",
     },
+    fontFamily: {
+      'noto': ['Noto Sans JP', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary: {
