@@ -34,7 +34,7 @@
     <dialog
         in:fly={{ y: 50, duration: 1000 }}
         class="bg-neutral-light 
-        w-2/3 
+        w-1/2 
         h-2/3 
         grid 
         gap-none
