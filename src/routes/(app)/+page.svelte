@@ -48,15 +48,13 @@
     >
         <div class="items-center justify-center grid grid-cols-3">
             <div class=" col-span-1 bg-secondary-medium h-full w-full">
-                <div class="flex flex-col h-full pt-[50%]">
+                <div class="flex flex-col h-full items-center pt-[33%]">
                     <img
                         class="p-2 rounded-full w-1/2 mx-auto bg-white m-3"
                         src="https://dh63x6re274g0.cloudfront.net/images/TAENavLogo.svg"
                         alt="Toyo Achieve English ロゴ"
                     />
-                    <h1
-                        class="text-2xl font-black text-neutral-ultralight mx-auto"
-                    >
+                    <h1 class="text-xl font-black text-neutral-ultralight mx-2">
                         管理ダッシュボード
                     </h1>
                 </div>
