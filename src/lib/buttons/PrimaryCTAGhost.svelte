@@ -1,14 +1,14 @@
 <script lang="ts">
-    export let parameters: any;
-    export let handler: any;
+    //export let parameters: any;
+    // export let handler: any;
     export let isDisabled = false;
+    //on:click|preventDefault={() => handler(...parameters)}
 
-    console.log(...parameters);
+    //console.log(...parameters);
 </script>
 
 <button
     disabled={isDisabled}
-    on:click|preventDefault={() => handler(...parameters)}
     class="
     font-bold 
     p-2 

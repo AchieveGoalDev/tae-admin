@@ -35,4 +35,9 @@ export const sideNavButtons: SideNavButtonProps[] = [
     text: "リポート",
     link: "/report",
   },
+  {
+    icon: "material-symbols:article",
+    text: "ニュース",
+    link: "/news"
+  }
 ];
