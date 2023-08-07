@@ -1,6 +1,5 @@
 <script lang="ts">
   //@ts-nocheck
-  import ksuid from "ksuid";
   import { createArticle } from "$lib/api/news/createArticle";
   import dayjs from "dayjs";
   import "dayjs/locale/ja.js";
