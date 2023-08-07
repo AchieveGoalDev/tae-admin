@@ -32,7 +32,7 @@
   };
 </script>
 
-<div class="w-full">
+<div class="w-full h-full">
   <form class="w-full flex flex-col px-[10%]">
     <label for="title">Title</label>
     <input name="title" type="text" bind:value={data.title} />
@@ -41,7 +41,7 @@
     <label for="alt">Image Alt</label>
     <input name="alt" type="text" bind:value={data.imageAlt} />
     <label for="content">HTML Content</label>
-    <textarea name="content" bind:value={data.htmlContent} />
+    <textarea name="content" bind:value={data.htmlContent} class="h-[300px]" />
 
     <div class="w-full flex flex-row justify-center mt-[20%]">
       <Datepicker

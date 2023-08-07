@@ -69,7 +69,9 @@
             h-full 
             px-[2rem]
             pt-[1rem] 
-            pb-[2rem]"
+            pb-[2rem]
+            overflow-y-scroll
+            "
     >
       <!--START HEADER-->
       <div
@@ -90,6 +92,7 @@
                     grid 
                     grid-rows-[repeat(24, 1fr)] 
                     grid-cols-12
+                    gap-0
                     "
       >
         <PanelBody>
