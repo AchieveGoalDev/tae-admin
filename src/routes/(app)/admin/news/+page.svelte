@@ -32,8 +32,8 @@
   };
 </script>
 
-<div class="w-full h-full">
-  <form class="w-full flex flex-col px-[10%]">
+<div class="w-full">
+  <form class="w-full flex flex-col px-[10%] pb-[1rem]">
     <label for="title">Title</label>
     <input name="title" type="text" bind:value={data.title} />
     <label for="image">Image</label>
@@ -43,7 +43,7 @@
     <label for="content">HTML Content</label>
     <textarea name="content" bind:value={data.htmlContent} class="h-[300px]" />
 
-    <div class="w-full flex flex-row justify-center mt-[20%]">
+    <div class="w-full flex flex-row justify-center mt-[5%]">
       <Datepicker
         value={{ locale }}
         bind:selected={data.creationDate}
@@ -51,7 +51,7 @@
       />
     </div>
     <button
-      class="p-2 bg-primary-medium hover:bg-primary-dark mt-2"
+      class="p-2 bg-primary-medium hover:bg-primary-dark my-2"
       on:click|preventDefault={createArticle(data)}>Submit</button
     >
   </form>

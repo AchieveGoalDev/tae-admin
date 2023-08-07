@@ -3,6 +3,7 @@
 
   import { fly, fade } from "svelte/transition";
   import { onMount } from "svelte";
+  //@ts-ignore
   import { goto } from "$app/navigation";
 
   import { interfaceState } from "$lib/stores/interface";
@@ -70,7 +71,7 @@
             px-[2rem]
             pt-[1rem] 
             pb-[2rem]
-            overflow-y-scroll
+            overflow-hidden
             "
     >
       <!--START HEADER-->

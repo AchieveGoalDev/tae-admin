@@ -14,6 +14,7 @@
         dark:bg-dark-ultralight
         p-[1rem]
         shadow-xlg
+        overflow-y-hidden
         "
 >
   <slot />
