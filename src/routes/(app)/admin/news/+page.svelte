@@ -19,7 +19,7 @@
     tags: [],
   };
 
-  $: console.log(date);
+  $: console.log(data);
 
   const theme = {
     calendar: {
@@ -37,11 +37,11 @@
     <label for="title">Title</label>
     <input name="title" type="text" bind:value={data.title} />
     <label for="image">Image</label>
-    <input name="image" type="text" bind:value={data.image} />
+    <input name="image" type="text" bind:value={data.imageUrl} />
     <label for="alt">Image Alt</label>
-    <input name="alt" type="text" bind:value={data.alt} />
+    <input name="alt" type="text" bind:value={data.imageAlt} />
     <label for="content">HTML Content</label>
-    <textarea name="content" bind:value={data.content} />
+    <textarea name="content" bind:value={data.htmlContent} />
 
     <div class="w-full flex flex-row justify-center mt-[20%]">
       <Datepicker
