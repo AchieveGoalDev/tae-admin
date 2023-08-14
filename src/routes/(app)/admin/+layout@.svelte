@@ -12,6 +12,7 @@
   import Header from "$lib/header/Header.svelte";
   import PanelBody from "$lib/panel/PanelBody.svelte";
   import PageWrapper from "$lib/wrappers/PageWrapper.svelte";
+  import ModalWrapper from "$lib/modals/ModalWrapper.svelte";
 
   export let data;
 
@@ -31,6 +32,7 @@
 </script>
 
 {#if loaded}
+  <ModalWrapper />
   <div
     class="grid gap-x-1 gap-y-0 grid-cols-[repeat(24, 1fr)] h-[100vh] bg-neutral-ultralight transition-all dark:bg-dark-ultradark"
   >
@@ -66,10 +68,10 @@
             col-[2_/_span_23]
             grid
             grid-cols-12
-            grid-rows-[repeat(24,.3fr)] 
-            h-full 
+            grid-rows-[repeat(24,.3fr)]
+            h-full
             px-[2rem]
-            pt-[1rem] 
+            pt-[1rem]
             pb-[2rem]
             overflow-hidden
             "
@@ -87,11 +89,11 @@
       <div
         in:fly={{ y: 200, duration: flyDuration + 150 }}
         class="
-                    h-full 
-                    col-span-12 
+                    h-full
+                    col-span-12
                     row-[span_23]
-                    grid 
-                    grid-rows-[repeat(24, 1fr)] 
+                    grid
+                    grid-rows-[repeat(24, 1fr)]
                     grid-cols-12
                     gap-0
                     "

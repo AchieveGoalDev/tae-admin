@@ -1,30 +1,55 @@
 <script lang="ts">
-    import { fade } from "svelte/transition";
+  import { interfaceState } from "$lib/stores/interface";
+  import { fade } from "svelte/transition";
 
-    export let showDialog: boolean;
+  import ModalError from "./ModalError.svelte";
+  import UpdateSemester from "./UpdateSemester.svelte";
 
-    function keydownEscape(e: KeyboardEvent) {
-        if (e.key === "Escape") {
-            showDialog = false;
-        }
+  function keydownEscape(e: KeyboardEvent) {
+    if (e.key === "Escape") {
+      $interfaceState.showModal = false;
     }
+  }
 
-    function focusModal(el: HTMLElement) {
-        console.log("modal focused");
-        el.focus();
-        console.log(el.id);
+  function displayModalContents(modal: string) {
+    switch (modal) {
+      case "updateSemester":
+        return UpdateSemester;
+      default:
+        return ModalError;
     }
+  }
+
+  function focusModal(el: HTMLElement) {
+    console.log("modal focused");
+    el.focus();
+    console.log(el.id);
+  }
+
+  function handleCloseModal() {
+    console.log("click");
+    $interfaceState.showModal = false;
+  }
+
+  let showModal = false;
+  let modalToDisplay = ModalError;
+
+  $: modalToDisplay = displayModalContents($interfaceState.modal);
+  $: showModal = $interfaceState.showModal;
+  $: console.log(showModal);
+
+  //TODO
+  //Implement easier navigation options
 </script>
 
-{#if showDialog}
-    <!--svelte-ignore--->
-    <div
-        use:focusModal
-        tabindex="0"
-        on:keydown|preventDefault={keydownEscape}
-        on:click={() => (showDialog = false)}
-        transition:fade
-        class="
+{#if showModal}
+  <!--svelte-ignore--->
+  <!-- use:focusModal -->
+  <!-- on:keydown|preventDefault={keydownEscape} -->
+  <!-- on:click={() => ($interfaceState.showModal = false)} -->
+  <div
+    transition:fade
+    class="
             bg-dark-ultradark
             bg-opacity-70
             flex
@@ -39,7 +64,10 @@
             cursor-auto
             shadow-lg
 "
-    >
-        <div class="bg-neutral-light h-1/3 w-1/3">Sup</div>
+  >
+    <div class="bg-neutral-light h-1/3 w-1/3">
+      <button on:click={handleCloseModal}>close</button>
+      <svelte:component this={modalToDisplay} />
     </div>
+  </div>
 {/if}

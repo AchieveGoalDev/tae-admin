@@ -12,8 +12,10 @@ export type TabData = {
 
 export type InterfaceData = {
   showNav: boolean;
+  showModal: boolean;
   tab: TabData;
   page: string;
+  modal: string;
 };
 
 //TODO add profile image path
@@ -31,8 +33,10 @@ const defaultTabs: TabData = {
 
 const defaultState: InterfaceData = {
   showNav: true,
+  showModal: false,
   tab: defaultTabs,
   page: "student",
+  modal: "semester",
 };
 
 export const interfaceState = writable(defaultState);
