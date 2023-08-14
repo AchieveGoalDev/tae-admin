@@ -13,25 +13,25 @@
 >
   <div
     class="
-    h-1/3 
-    bg-primary-ultradark 
-    transition:all 
-    dark:bg-dark-ultralight 
-    rounded-br-lg 
-    shadow-md 
-    flex 
-    flex-col 
-    items-center 
-    justify-center 
+    h-1/4
+    bg-primary-ultradark
+    transition:all
+    dark:bg-dark-ultralight
+    rounded-br-lg
+    shadow-md
+    flex
+    flex-col
+    items-center
+    justify-center
     place-content-between
     "
   >
     <div
       class="
-      h-1/3 
-      pt-[2rem] 
-      self-start 
-      justify-self-start 
+      h-1/3
+      pt-[2rem]
+      self-start
+      justify-self-start
       pl-[2rem]
       "
     >
@@ -60,12 +60,12 @@
       <h5 class="">管理ダッシュボード</h5>
     </div>
   </div>
-  <nav class="h-1/3 flex flex-col justify-around my-[.5rem] font-bold">
+  <nav class="h-1/2 flex flex-col justify-around my-[.5rem] font-bold">
     {#each sideNavButtons as button}
       <SideNavButton props={button} />
     {/each}
   </nav>
   <div
-    class="h-1/3 bg-primary-ultradark rounded-tr-lg shadow-md dark:bg-dark-ultralight transition-all"
+    class="h-1/4 bg-primary-ultradark rounded-tr-lg shadow-md dark:bg-dark-ultralight transition-all"
   />
 </div>
