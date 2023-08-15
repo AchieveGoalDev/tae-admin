@@ -9,5 +9,5 @@ export async function createSemester(data: SemesterData) {
         data: data
     }
 
-    handleAPIPost(body, PUBLIC_API_GATEWAY_URL + "/semester")
+    handleAPIPost(body, PUBLIC_API_GATEWAY_URL + "/semeste")
 }
