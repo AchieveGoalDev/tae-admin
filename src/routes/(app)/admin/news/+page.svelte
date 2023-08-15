@@ -1,14 +1,12 @@
 <script lang="ts">
   //@ts-nocheck
   import { createArticle } from "$lib/api/news/createArticle";
-  import dayjs from "dayjs";
-  import "dayjs/locale/ja.js";
-  import { Datepicker } from "svelte-calendar";
+  import LocalizedDatepicker from "$lib/datetime/LocalizedDatepicker.svelte";
 
   import type { Article } from "$lib/news/ArticleDef";
 
   let date = new Date();
-  let locale = dayjs.locale("ja");
+
   let data: Article = {
     id: "id",
     title: "",
@@ -43,13 +41,7 @@
     <label for="content">HTML Content</label>
     <textarea name="content" bind:value={data.htmlContent} class="h-[300px]" />
 
-    <div class="w-full flex flex-row justify-center mt-[5%]">
-      <Datepicker
-        value={{ locale }}
-        bind:selected={data.creationDate}
-        {theme}
-      />
-    </div>
+    <LocalizedDatepicker bind:selected={data.creationDate} />
     <button
       class="p-2 bg-primary-medium hover:bg-primary-dark my-2"
       on:click|preventDefault={createArticle(data)}>Submit</button

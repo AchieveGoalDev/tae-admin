@@ -65,7 +65,7 @@
             shadow-lg
 "
   >
-    <div class="bg-neutral-light h-1/3 w-1/3">
+    <div class="bg-neutral-light h-2/3 w-1/2 overflow-y-auto">
       <button on:click={handleCloseModal}>close</button>
       <svelte:component this={modalToDisplay} />
     </div>
