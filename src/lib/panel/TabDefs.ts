@@ -46,21 +46,21 @@ const underConstruction: TabDef = {
   isDefault: true,
 };
 
-const classTextbook: TabDef = {
+export const classTextbook: TabDef = {
   text: "教科書",
   tag: "教科書",
   icon: "ph:book-fill",
   isDefault: false,
 }
 
-const classCourse: TabDef = {
+export const classCourse: TabDef = {
   text: "コース",
   tag: "コース",
-  icon: "ph:book-fill",
+  icon: "ph:chalkboard-teacher-fill",
   isDefault: false,
 }
 
-const classSchedule: TabDef = {
+export const classSchedule: TabDef = {
   text: "時刻表",
   tag: "時刻表",
   icon: "mdi:timetable",

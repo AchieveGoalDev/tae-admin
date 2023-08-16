@@ -1,9 +1,36 @@
 <script lang="ts">
-  import UnderConstruction from "$lib/placeholder/UnderConstruction.svelte";
+  import PanelInteriorWrapper from "$lib/panel/PanelInteriorWrapper.svelte";
+  import PanelSelector from "$lib/panel/PanelSelector.svelte";
+
+  import Courses from "$lib/panel/class/Courses.svelte";
+  import Textbooks from "$lib/panel/class/Textbooks.svelte";
+  import Schedule from "$lib/panel/class/Schedule.svelte";
+
+  import {
+    classTextbook,
+    classCourse,
+    classSchedule,
+  } from "$lib/panel/TabDefs";
+
+  const componentList = [
+    {
+      name: classCourse.tag,
+      isDefaut: classCourse.isDefault,
+      component: Courses,
+    },
+    {
+      name: classSchedule.tag,
+      isDefaut: classSchedule.isDefault,
+      component: Schedule,
+    },
+    {
+      name: classTextbook.tag,
+      isDefaut: classTextbook.isDefault,
+      component: Textbooks,
+    },
+  ];
 </script>
 
-<main
-  class="w-full h-full bg-neutral-light dark:bg-dark-ultradark dark:text-neutral-light"
->
-  <UnderConstruction />
-</main>
+<PanelInteriorWrapper>
+  <PanelSelector components={componentList} panelName={"class"} />
+</PanelInteriorWrapper>
