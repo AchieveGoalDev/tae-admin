@@ -7,10 +7,15 @@
   let tabList = tabIndex.event;
 
   const updateTabs = (state: string) => {
-    if (state === "event") {
-      tabList = tabIndex.event;
-    } else {
-      tabList = tabIndex.uc;
+    switch (state) {
+      case "event":
+        tabList = tabIndex.event;
+        break;
+      case "class":
+        tabList = tabIndex.class;
+        break;
+      default:
+        tabList = tabIndex.uc;
     }
   };
 

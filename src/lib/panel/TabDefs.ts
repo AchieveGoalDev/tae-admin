@@ -8,6 +8,7 @@ export type TabDef = {
 export type TabIndex = {
   event: TabDef[];
   uc: TabDef[];
+  class: TabDef[];
 };
 
 const eventManageGakunai: TabDef = {
@@ -45,6 +46,27 @@ const underConstruction: TabDef = {
   isDefault: true,
 };
 
+const classTextbook: TabDef = {
+  text: "教科書",
+  tag: "教科書",
+  icon: "ph:book-fill",
+  isDefault: false,
+}
+
+const classCourse: TabDef = {
+  text: "コース",
+  tag: "コース",
+  icon: "ph:book-fill",
+  isDefault: false,
+}
+
+const classSchedule: TabDef = {
+  text: "時刻表",
+  tag: "時刻表",
+  icon: "mdi:timetable",
+  isDefault: true
+}
+
 export const tabIndex: TabIndex = {
   event: [
     eventManageGakunai,
@@ -53,4 +75,9 @@ export const tabIndex: TabIndex = {
     eventApplicantGakugai,
   ],
   uc: [underConstruction],
+  class: [
+    classSchedule,
+    classCourse,
+    classTextbook,
+  ]
 };
