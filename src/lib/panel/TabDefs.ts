@@ -54,8 +54,8 @@ export const classTextbook: TabDef = {
 }
 
 export const classCourse: TabDef = {
-  text: "コース",
-  tag: "コース",
+  text: "講座",
+  tag: "講座",
   icon: "ph:chalkboard-teacher-fill",
   isDefault: false,
 }

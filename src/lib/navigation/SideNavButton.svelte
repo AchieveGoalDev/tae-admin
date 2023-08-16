@@ -27,7 +27,6 @@
             xl:h-[2.8em]
             bg-primary-light
             -translate-x-[1rem]
-            translate-x-0
             transition-all
             ease-in-out
             dark:bg-neutral-medium 

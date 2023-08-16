@@ -92,7 +92,6 @@
     items-center
     bg-primary-dark 
     p-[.5rem]
-    p-3
     mr-2
     text-lg
     font-bold
