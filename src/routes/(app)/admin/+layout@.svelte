@@ -7,7 +7,7 @@
   import { goto } from "$app/navigation";
 
   import { interfaceState } from "$lib/stores/interface";
-  import { meta } from "$lib/stores/dataContext";
+  import { meta, fetchSemesterMetadata } from "$lib/stores/dataContext";
 
   import SideNav from "$lib/navigation/SideNav.svelte";
   import Header from "$lib/header/Header.svelte";
@@ -24,8 +24,8 @@
 
   onMount(() => {
     async () => {
-      console.log("Imma firin mah metadata");
-      await $meta.fetchSemesterMetadata();
+      //@ts-ignore
+      $meta.semesters = await fetchSemesterMetadata();
     };
 
     loaded = true;
