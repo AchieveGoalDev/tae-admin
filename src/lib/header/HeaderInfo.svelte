@@ -9,7 +9,7 @@
   let years = [];
 
   $: console.log($meta.semesters);
-  $: years = $meta.semesters;
+  $: years = Object.keys($meta.semesters);
   //@ts-ignore
   $: years = years?.sort();
 </script>
