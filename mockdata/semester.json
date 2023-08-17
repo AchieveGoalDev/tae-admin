@@ -1,0 +1,92 @@
+//Single Item
+{
+    "headers": {
+        "origin": "yamum"
+    },
+    "body": {
+        "action": "CREATE",
+        "resource": "SEMESTER",
+        "data": {
+            "isLegacy": false,
+            "createdOn": 1692252796,
+            "createdBy": "スミス　ジャスティン",
+            "updatedOn": 1692252796,
+            "updateHistory": [],
+            "isCurrent": false,
+            "season": "秋",
+            "year": "2023",
+            "startDate": 1692238757,
+            "endDate": 1692238757,
+            "priorityStartDate": 1692238757,
+            "priorityEndDate": 1692238757
+        }
+    }
+}
+//Batch Item
+{
+    "headers": {
+        "origin": "yamum"
+    },
+    "body": {
+        "action": "CREATE",
+        "resource": "SEMESTER",
+        "data": [
+            {
+                "isLegacy": false,
+                "createdOn": 1692252796,
+                "createdBy": "スミス　ジャスティン",
+                "updatedOn": 1692252796,
+                "updateHistory": [],
+                "isCurrent": true,
+                "season": "秋",
+                "year": "2023",
+                "startDate": 1692238757,
+                "endDate": 1692238757,
+                "priorityStartDate": 1692238757,
+                "priorityEndDate": 1692238757
+            },
+            {
+                "isLegacy": true,
+                "createdOn": 1692252796,
+                "createdBy": "スミス　ジャスティン",
+                "updatedOn": 1692252796,
+                "updateHistory": [],
+                "isCurrent": false,
+                "season": "春",
+                "year": "2023",
+                "startDate": 1692238757,
+                "endDate": 1692238757,
+                "priorityStartDate": 1692238757,
+                "priorityEndDate": 1692238757
+            },
+            {
+                "isLegacy": true,
+                "createdOn": 1692252796,
+                "createdBy": "島崎 映之",
+                "updatedOn": 1692252796,
+                "updateHistory": [],
+                "isCurrent": false,
+                "season": "秋",
+                "year": "2022",
+                "startDate": 1692238757,
+                "endDate": 1692238757,
+                "priorityStartDate": 1692238757,
+                "priorityEndDate": 1692238757
+            },
+            {
+                "isLegacy": true,
+                "createdOn": 1692252796,
+                "createdBy": "スミス　ジャスティン",
+                "updatedOn": 1692252796,
+                "updateHistory": [],
+                "isCurrent": false,
+                "season": "春",
+                "year": "2022",
+                "startDate": 1692238757,
+                "endDate": 1692238757,
+                "priorityStartDate": 1692238757,
+                "priorityEndDate": 1692238757
+            }
+        ]
+    }
+}
