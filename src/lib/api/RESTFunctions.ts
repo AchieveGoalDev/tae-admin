@@ -17,14 +17,16 @@ export async function handleAPIPost(data: any, url: string) {
         })
         console.log("API call success")
         console.log(JSON.stringify(response))
+        return response
     } catch (err) {
         console.log("API call error")
         console.log(err)
     }
-
 }
 
 export async function handleAPIDataPost(resource: string, action: string, data = {}, target: string | null = null) {
+
+    console.log("Api data post fired")
 
     const requestBody = {
         resource,
@@ -51,6 +53,7 @@ export async function handleAPIDataPost(resource: string, action: string, data =
         const response = await fetch(apiUrl, params)
         console.log("API call success")
         console.log(JSON.stringify(response))
+        return response
     } catch (err) {
         console.log("API call error")
         console.log(err)
