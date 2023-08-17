@@ -24,6 +24,7 @@
 
   onMount(() => {
     async () => {
+      console.log("Imma firin mah metadata");
       await $meta.fetchSemesterMetadata();
     };
 
