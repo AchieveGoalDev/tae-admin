@@ -1,13 +1,17 @@
 <script lang="ts">
+  //@ts-nocheck
   import { meta } from "$lib/stores/dataContext";
-
-  let years = $meta.semesters;
-  //@ts-ignore
-  years = years.sort();
 
   import HeaderIcon from "$lib/icons/HeaderIcon.svelte";
   import Select from "$lib/forms/input/Select.svelte";
   import InvokeModal from "$lib/buttons/InvokeModal.svelte";
+
+  let years = [];
+
+  $: console.log($meta.semesters);
+  $: years = $meta.semesters;
+  //@ts-ignore
+  $: years = years?.sort();
 </script>
 
 <header>
@@ -37,9 +41,11 @@
         <div>
           <span>
             <Select>
-              {#each years as year}
-                <option>{year}</option>
-              {/each}
+              {#key years}
+                {#each years as year}
+                  <option>{year}</option>
+                {/each}
+              {/key}
             </Select>
           </span>
         </div>
