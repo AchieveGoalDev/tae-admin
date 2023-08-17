@@ -1,8 +1,13 @@
 import { writable } from "svelte/store";
 import { handleAPIDataPost } from "$lib/api/RESTFunctions";
 
+type SemesterDataFetch = {
+    Item: SemesterMetaData
+}
 
-
+type SemesterMetaData = {
+    [key: string]: [string, string]
+}
 
 export type DataContext = {
     selectedCampus: string;
@@ -10,18 +15,20 @@ export type DataContext = {
 }
 
 export class MetaData {
-    campuses: string[] | void;
-    semesters: string[] | void;
+    campuses: string[] | ["unset"];
+    semesters: SemesterMetaData | ["unset"];
 
-    constructor(campuses: string[] = [], semesters: string[] = []) {
-        this.campuses = campuses;
-        this.semesters = semesters;
+    constructor() {
+        this.campuses = ["unset"];
+        this.semesters = ["unset"];
     }
 
     async fetchSemesterMetadata() {
         try {
-            const dbRes = await handleAPIDataPost("META", "GET_SEMESTER", {});
-            this.semesters = dbRes;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore
+            const dbRes: SemesterDataFetch = await handleAPIDataPost("META", "GET_SEMESTER", {});
+            this.semesters = dbRes.Item;
         } catch (err) {
             console.log(err)
         }

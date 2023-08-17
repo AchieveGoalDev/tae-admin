@@ -1,7 +1,8 @@
 <script lang="ts">
   import { meta } from "$lib/stores/dataContext";
 
-  let years = Object.keys($meta);
+  let years = $meta.semesters;
+  //@ts-ignore
   years = years.sort();
 
   import HeaderIcon from "$lib/icons/HeaderIcon.svelte";
