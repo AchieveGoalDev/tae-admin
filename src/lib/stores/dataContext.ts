@@ -19,8 +19,10 @@ export class MetaData {
     semesters: SemesterMetaData | ["unset"];
 
     constructor() {
-        this.campuses = ["unset"];
-        this.semesters = ["unset"];
+        this.campuses = [];
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        this.semesters = [];
     }
 
     async fetchSemesterMetadata() {
