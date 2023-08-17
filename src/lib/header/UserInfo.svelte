@@ -15,7 +15,7 @@
   <div class="">{$user.title}</div>
   <span class="mx-2">-</span>
   <span>さん</span>
-  <div class="font-bold">{$user.name}</div>
+  <div class="font-bold">{$user.last}</div>
   <div
     class="h-[3rem] w-[3rem] outline outline-solid outline-black outline-2 mr-2 rounded-full"
   />

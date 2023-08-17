@@ -1,7 +1,8 @@
 import { writable } from "svelte/store";
 
-export type userData = {
-    name: string,
+export type UserData = {
+    first: string,
+    last: string,
     title: string
 }
 
@@ -9,9 +10,10 @@ export type userData = {
 //TODO add enumerator for titles
 //TODO add user settings
 
-const testUser: userData = {
-    name: "道間",
-    title: "編集者"
+const testUser: UserData = {
+    first: "ジャスティン",
+    last: "スミス",
+    title: "管理者"
 }
 
 export const user = writable(testUser)
