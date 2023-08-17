@@ -1,4 +1,9 @@
 <script lang="ts">
+  import { meta } from "$lib/stores/dataContext";
+
+  let years = Object.keys($meta);
+  years = years.sort();
+
   import HeaderIcon from "$lib/icons/HeaderIcon.svelte";
   import Select from "$lib/forms/input/Select.svelte";
   import InvokeModal from "$lib/buttons/InvokeModal.svelte";
@@ -31,9 +36,9 @@
         <div>
           <span>
             <Select>
-              <option>2023</option>
-              <option>2022</option>
-              <option>2021</option>
+              {#each years as year}
+                <option>{year}</option>
+              {/each}
             </Select>
           </span>
         </div>

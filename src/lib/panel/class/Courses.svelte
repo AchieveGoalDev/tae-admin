@@ -3,7 +3,7 @@
     import { user } from "$lib/stores/user";
 
     let toSubmit: Course = {
-        createdBy: `${user.last} ${user.first} `,
+        createdBy: `${$user.last} ${$user.first} `,
         updateHistory: [],
         createdOn: new Date(),
         updatedOn: new Date(),

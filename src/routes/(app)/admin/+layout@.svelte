@@ -7,6 +7,7 @@
   import { goto } from "$app/navigation";
 
   import { interfaceState } from "$lib/stores/interface";
+  import { meta } from "$lib/stores/dataContext";
 
   import SideNav from "$lib/navigation/SideNav.svelte";
   import Header from "$lib/header/Header.svelte";
@@ -16,17 +17,24 @@
 
   export let data;
 
-  //TODO Add side nav drawer
   let loaded = false;
   let logged = true;
   let pageTransitionSpeed = 300;
   let flyDuration = 500;
 
-  onMount(() => (loaded = true));
+  onMount(() => {
+    async () => {
+      await $meta.fetchSemesterMetadata();
+    };
+
+    loaded = true;
+  });
 
   $: if (!logged) {
     goto("/", { replaceState: true });
   }
+
+  //TODO Add side nav drawer
   //TODO make sidenav tray component
   //TODO make a more fluid transition to tray by manipulating grid stuff
 </script>
@@ -127,4 +135,6 @@
     </div>
     <!--END RIGHT HALF-->
   </div>
+{:else}
+  <div>読み込み中</div>
 {/if}
