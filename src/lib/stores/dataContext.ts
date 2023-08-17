@@ -30,6 +30,7 @@ export class MetaData {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             //@ts-ignore
             const dbRes: SemesterDataFetch = await handleAPIDataPost("META", "GET_SEMESTER", {});
+            console.log(dbRes)
             this.semesters = dbRes.Item;
         } catch (err) {
             console.log(err)
