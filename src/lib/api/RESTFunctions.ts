@@ -29,10 +29,10 @@ export async function handleAPIDataPost(resource: string, action: string, data =
     console.log("Api data post fired")
 
     const requestBody = {
-        resource,
-        action,
-        target,
-        data,
+        resource: resource,
+        action: action,
+        target: target,
+        data: data,
     }
 
     const headers = {

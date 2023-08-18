@@ -17,26 +17,23 @@
 
   export let data;
 
-  let asyncMsg = "got nothing";
-
   let loaded = false;
   let logged = true;
   let pageTransitionSpeed = 300;
   let flyDuration = 500;
 
+  let thingy;
+
   onMount(async () => {
     console.log("Mounting layout");
-    asyncMsg = "invoked async";
     //@ts-ignore
-    $meta.semesters = await fetchSemesterMetadata();
+    thingy = await fetchSemesterMetadata();
     console.log("Await block over");
 
     loaded = true;
   });
 
-  $: asyncMsg = asyncMsg;
-  $: console.log(asyncMsg);
-  $: console.log($meta);
+  $: console.log(thingy);
 
   $: if (!logged) {
     goto("/", { replaceState: true });
@@ -49,9 +46,6 @@
 
 {#if loaded}
   <ModalWrapper />
-  {#key asyncMsg}
-    <div>{asyncMsg}</div>
-  {/key}
   <div
     class="grid gap-x-1 gap-y-0 grid-cols-[repeat(24, 1fr)] h-[100vh] bg-neutral-ultralight transition-all dark:bg-dark-ultradark"
   >

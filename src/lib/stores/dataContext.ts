@@ -18,27 +18,24 @@ export async function fetchSemesterMetadata() {
     try {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
-        const dbRes: SemesterDataFetch = await handleAPIDataPost("META", "GET_SEMESTER", {});
+        const dbRes: any = await handleAPIDataPost("META", "GET_SEMESTER");
         console.log(dbRes)
-        return dbRes.Item
+        return dbRes.body
     } catch (err) {
         console.log(err)
     }
 }
 
-export class MetaData {
-    campuses: string[] | ["unset"];
-    semesters: SemesterMetaData | ["unset"];
+export type MetaData = {
+    campuses: string[];
+    semesters: string[];
+}
 
-    constructor() {
-        this.campuses = [];
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        this.semesters = [];
-    }
+const metaData: MetaData = {
+    campuses: [],
+    semesters: []
 }
 
 
-
-export const meta = writable(new MetaData())
+export const meta = writable(metaData)
 export const context = writable()
