@@ -1,20 +1,17 @@
 <script lang="ts">
   //@ts-nocheck
-  import { meta } from "$lib/stores/dataContext";
+  import { meta, context } from "$lib/stores/dataContext";
 
   import HeaderIcon from "$lib/icons/HeaderIcon.svelte";
   import Select from "$lib/forms/input/Select.svelte";
   import InvokeModal from "$lib/buttons/InvokeModal.svelte";
 
-  let years = [];
-
-  $: console.log($meta.semesters);
-  $: years = Object.keys($meta.semesters);
-  //@ts-ignore
-  $: years = years?.sort();
+  $: $context = $context;
+  $: console.log($context);
 </script>
 
 <header>
+  <button on:click={() => console.log($context)}> Context </button>
   <div class="flex h-full items-center">
     <div
       class="
@@ -40,20 +37,26 @@
       >
         <div>
           <span>
-            <Select>
-              {#key years}
-                {#each years as year}
-                  <option>{year}</option>
+            <Select bind:value={$context.selectedYear}>
+              {#key $meta.years}
+                {#each $meta.years as year}
+                  <option value={year}>{year}</option>
                 {/each}
               {/key}
             </Select>
           </span>
         </div>
 
-        <Select>
-          <option>S23(春)</option>
-          <option>A22(秋)</option>
-        </Select>
+        {#if $context.selectedYear}
+          <Select>
+            {#each $meta.semesterMetadata[$context.selectedYear] as semester}
+              <option>
+                {semester}
+              </option>
+            {/each}
+          </Select>
+        {/if}
+
         <InvokeModal modal="updateSemester" isDisabled={false}>変更</InvokeModal
         >
       </div>

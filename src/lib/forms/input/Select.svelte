@@ -1,7 +1,18 @@
 <script lang="ts">
+    export let value = "unset";
+
+    function changeValue(e: Event) {
+        const { target } = e;
+        if (target) {
+            value = (target as HTMLSelectElement).value;
+        }
+    }
+
+    $: value = value;
 </script>
 
 <select
+    on:change={(e) => changeValue(e)}
     class="
     bg-neutral-light
     transition-all

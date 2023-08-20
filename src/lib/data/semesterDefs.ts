@@ -4,6 +4,7 @@ type UpdateHistoryItem = {
 }
 
 export type SemesterData = {
+  isLegacy: boolean;
   createdOn: string;
   createdBy: string;
   updatedOn: Date;

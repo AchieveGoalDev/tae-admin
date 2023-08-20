@@ -53,7 +53,7 @@ export async function handleAPIDataPost(resource: string, action: string, data =
         const response = await fetch(apiUrl, params)
         console.log("API call success")
         console.log(JSON.stringify(response))
-        return response
+        return response.json()
     } catch (err) {
         console.log("API call error")
         console.log(err)

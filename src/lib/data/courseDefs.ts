@@ -1,3 +1,8 @@
+import type { Textbook } from "$lib/data/textDefs"
+
+export type Level = "初級" | "初中級" |
+    "中級" | "上級"
+
 export type Course = {
     createdBy: string,
     updateHistory: string[],
@@ -5,9 +10,9 @@ export type Course = {
     updatedOn: Date,
     courseName: string,
     courseId: string,
-    textbooks: string[],
+    textbook: Textbook,
     isOnline: boolean,
-    level: string,
+    level: Level,
     type: string,
 }
 

@@ -28,7 +28,7 @@
         "origin": "yamum"
     },
     "body": {
-        "action": "CREATE",
+        "action": "BATCH_CREATE",
         "resource": "SEMESTER",
         "data": [
             {

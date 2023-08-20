@@ -22,19 +22,23 @@
   let pageTransitionSpeed = 300;
   let flyDuration = 500;
 
-  let thingy;
-
   onMount(async () => {
-    console.log("Mounting layout");
     //@ts-ignore
-    thingy = await fetchSemesterMetadata();
-    console.log("Await block over");
+    let semesterMetadata = await fetchSemesterMetadata();
 
+    if (semesterMetadata?.years) {
+      $meta.years = semesterMetadata?.years;
+    }
+
+    if (semesterMetadata?.meta) {
+      //@ts-ignore
+      $meta.semesterMetadata = semesterMetadata?.meta;
+    }
+    console.log($meta);
     loaded = true;
   });
 
-  $: console.log(thingy);
-
+  $: console.log($meta);
   $: if (!logged) {
     goto("/", { replaceState: true });
   }
