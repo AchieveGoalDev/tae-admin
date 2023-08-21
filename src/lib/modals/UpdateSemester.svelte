@@ -1,10 +1,17 @@
 <script lang="ts">
+  import { user } from "$lib/stores/user";
+
   import type { SemesterData } from "$lib/data/semesterDefs";
   import LocalizedDatepicker from "$lib/datetime/LocalizedDatepicker.svelte";
   import { createSemester } from "$lib/api/data/semester";
 
   let inputData: SemesterData = {
+    createdBy: `${$user.last} ${$user.first}`,
+    updatedOn: null,
+    updateHistory: [],
+    createdOn: new Date(),
     isCurrent: false,
+    isLegacy: false,
     season: "秋",
     year: "2022",
     startDate: new Date(),
