@@ -1,11 +1,13 @@
 import type { Level } from "$lib/data/courseDefs";
 
 export type Textbook = {
-    name: string;
-    level: Level;
-    createdOn: Date;
-    updatedOn: Date;
+    title: string | null;
+    level: Level | null;
+    key: string | null;
+    createdOn: number;
+    updatedOn: number;
     createdBy: string;
     updateHistory: string[];
 }
 
+export type TextbookFetch = { data: Textbook[] } | undefined

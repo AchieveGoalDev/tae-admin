@@ -62,7 +62,8 @@
   {#if !checkCurrentTab(props.tag, props.isDefault)}
     <li
       class="
-        bg-primary-ultradark p-[.5rem]
+        bg-primary-ultradark 
+        p-[.5rem]
         mr-2
         text-lg
         font-bold
@@ -79,7 +80,7 @@
         on:click={() => {
           updateTab(currentPath, props.tag);
         }}
-        class={"flex items-center m-2"}
+        class={"flex flex-row items-center m-2"}
       >
         <iconify-icon icon={props.icon} class="mr-2" />
         <h4 class="text-md font-bold">{props.text}</h4>

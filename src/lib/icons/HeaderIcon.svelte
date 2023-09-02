@@ -9,9 +9,14 @@
         flex 
         text-dark-dark 
         dark:text-neutral-light 
-        text-4xl h-full 
-        w-full justify-center 
-        items-center"
+        text-2xl
+        h-full 
+        w-full 
+        justify-center 
+        items-center
+        mx-auto
+        my-auto
+        "
 >
     <iconify-icon icon={`${icon}`} />
 </div>

@@ -7,7 +7,12 @@
   import { goto } from "$app/navigation";
 
   import { interfaceState } from "$lib/stores/interface";
-  import { meta, fetchSemesterMetadata } from "$lib/stores/dataContext";
+  import {
+    meta,
+    context,
+    fetchSemesterMetadata,
+    fetchTextData,
+  } from "$lib/stores/dataContext";
 
   import SideNav from "$lib/navigation/SideNav.svelte";
   import Header from "$lib/header/Header.svelte";
@@ -25,9 +30,14 @@
   onMount(async () => {
     //@ts-ignore
     let semesterMetadata = await fetchSemesterMetadata();
+    let textData = await fetchTextData();
 
     if (semesterMetadata?.years) {
       $meta.years = semesterMetadata?.years;
+    }
+
+    if (textData) {
+      $context.textbooks = textData?.data;
     }
 
     if (semesterMetadata?.meta) {

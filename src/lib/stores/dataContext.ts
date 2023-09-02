@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
 import { handleAPIDataPost } from "$lib/api/RESTFunctions";
+import type { TextbookFetch, Textbook } from "$lib/data/textDefs";
 
 
 type SemesterMetaData = {
@@ -11,6 +12,7 @@ export type DataContext = {
     selectedCampus: string | null;
     selectedSemester: string | null;
     selectedYear: string | null;
+    textbooks: Textbook[] | null;
 }
 
 export type MetaData = {
@@ -28,7 +30,8 @@ const metaData: MetaData = {
 const dataContext: DataContext = {
     selectedCampus: null,
     selectedSemester: null,
-    selectedYear: null
+    selectedYear: null,
+    textbooks: null,
 }
 
 export async function fetchSemesterMetadata() {
@@ -47,6 +50,17 @@ export async function fetchSemesterMetadata() {
     }
 }
 
+export async function fetchTextData() {
+    try {
+        const dbRes: TextbookFetch = await handleAPIDataPost("TEXT", "GET_ALL");
+
+        if (dbRes !== undefined) {
+            return dbRes
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 
 export const meta = writable(metaData)

@@ -1,13 +1,35 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  let cells = ["stuff", "stuff", "stuff", "stuff"];
+
+  export let length: number;
+  export let index: number;
+
+  let evenRow = `
+      grid 
+      p-2 
+      bg-primary-ultralight 
+      text-md 
+      bg-opacity-20
+    `;
+
+  let oddRow = `
+      grid 
+      p-2 
+      text-md 
+    `;
+
+  function calculateClass(index: number) {
+    if (index % 2 === 0) {
+      return evenRow;
+    } else {
+      return oddRow;
+    }
+  }
 </script>
 
 <div
-  class="grid bg-secondary-ultralight my-2 p-2 text-md bg-opacity-20"
-  style:grid-template-columns={`repeat(${cells.length}, 1fr)`}
+  style:grid-template-columns={`repeat(${length}, 1fr)`}
+  class={calculateClass(index)}
 >
-  {#each cells as cell}
-    <p transition:slide class="grid col-span-1 mx-auto">{cell}</p>
-  {/each}
+  <slot />
 </div>
