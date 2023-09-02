@@ -5,9 +5,9 @@ type UpdateHistoryItem = {
 
 export type SemesterData = {
   isLegacy: boolean;
-  createdOn: string;
+  createdOn: Date;
   createdBy: string;
-  updatedOn: Date;
+  updatedOn: Date | null;
   updateHistory: UpdateHistoryItem[];
   isCurrent: boolean;
   season: "秋" | "春";
