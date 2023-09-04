@@ -30,6 +30,7 @@
 <div
   style:grid-template-columns={`repeat(${length}, 1fr)`}
   class={calculateClass(index)}
+  transition:slide|local
 >
   <slot />
 </div>

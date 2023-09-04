@@ -13,9 +13,12 @@ export type TabData = {
 export type InterfaceData = {
   showNav: boolean;
   showModal: boolean;
+  dataRefresh: boolean;
+  refreshStamp: number;
   tab: TabData;
   page: string;
   modal: string;
+  campus: string;
 };
 
 //TODO add profile image path
@@ -34,9 +37,12 @@ const defaultTabs: TabData = {
 const defaultState: InterfaceData = {
   showNav: true,
   showModal: false,
+  dataRefresh: false,
+  refreshStamp: new Date().getTime(),
   tab: defaultTabs,
   page: "student",
   modal: "semester",
+  campus: "白山",
 };
 
 export const interfaceState = writable(defaultState);

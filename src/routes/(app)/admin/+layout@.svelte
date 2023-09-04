@@ -12,6 +12,8 @@
     context,
     fetchSemesterMetadata,
     fetchTextData,
+    fetchCourseData,
+    fetchSlotData,
   } from "$lib/stores/dataContext";
 
   import SideNav from "$lib/navigation/SideNav.svelte";
@@ -31,6 +33,8 @@
     //@ts-ignore
     let semesterMetadata = await fetchSemesterMetadata();
     let textData = await fetchTextData();
+    let courseData = await fetchCourseData();
+    let slotData = await fetchSlotData();
 
     if (semesterMetadata?.years) {
       $meta.years = semesterMetadata?.years;
@@ -38,6 +42,14 @@
 
     if (textData) {
       $context.textbooks = textData?.data;
+    }
+
+    if (courseData) {
+      $context.courses = courseData?.data;
+    }
+
+    if (slotData) {
+      $context.timeslots = slotData?.data;
     }
 
     if (semesterMetadata?.meta) {

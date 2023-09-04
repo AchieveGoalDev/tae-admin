@@ -1,67 +1,96 @@
 import { writable } from "svelte/store";
 import { handleAPIDataPost } from "$lib/api/RESTFunctions";
 import type { TextbookFetch, Textbook } from "$lib/data/textDefs";
-
+import type { CourseFetch, Course } from "$lib/data/courseDefs";
+import type { TimeSlot, TimeSlotFetch } from "$lib/data/scheduleDefs";
 
 type SemesterMetaData = {
-    [key: string]: [string, string]
-
-}
+  [key: string]: [string, string];
+};
 
 export type DataContext = {
-    selectedCampus: string | null;
-    selectedSemester: string | null;
-    selectedYear: string | null;
-    textbooks: Textbook[] | null;
-}
+  selectedCampus: string | null;
+  selectedSemester: string | null;
+  selectedYear: string | null;
+  textbooks: Textbook[] | null;
+  courses: Course[] | null;
+  timeslots: TimeSlot[] | null;
+};
 
 export type MetaData = {
-    campuses: string[];
-    years: string[];
-    semesterMetadata: SemesterMetaData | null;
-}
+  campuses: string[];
+  years: string[];
+  semesterMetadata: SemesterMetaData | null;
+};
 
 const metaData: MetaData = {
-    campuses: [],
-    years: [],
-    semesterMetadata: null
-}
+  campuses: [],
+  years: [],
+  semesterMetadata: null,
+};
 
 const dataContext: DataContext = {
-    selectedCampus: null,
-    selectedSemester: null,
-    selectedYear: null,
-    textbooks: null,
-}
+  selectedCampus: null,
+  selectedSemester: null,
+  selectedYear: null,
+  textbooks: null,
+  courses: null,
+  timeslots: null,
+};
 
 export async function fetchSemesterMetadata() {
-    try {
-        const dbRes: SemesterMetaData = await handleAPIDataPost("META", "GET_SEMESTER");
+  try {
+    const dbRes: SemesterMetaData = await handleAPIDataPost(
+      "META",
+      "GET_SEMESTER"
+    );
 
-        const data = {
-            //@ts-ignore: fuckattahea
-            years: Object.keys(dbRes.data),
-            meta: dbRes.data
-        }
-        return data;
-
-    } catch (err) {
-        console.log(err)
-    }
+    const data = {
+      //@ts-ignore: unnecessary
+      years: Object.keys(dbRes.data),
+      meta: dbRes.data,
+    };
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export async function fetchTextData() {
-    try {
-        const dbRes: TextbookFetch = await handleAPIDataPost("TEXT", "GET_ALL");
+  try {
+    const dbRes: TextbookFetch = await handleAPIDataPost("TEXT", "GET_ALL");
 
-        if (dbRes !== undefined) {
-            return dbRes
-        }
-    } catch (err) {
-        console.log(err)
+    if (dbRes !== undefined) {
+      return dbRes;
     }
+  } catch (err) {
+    console.log(err);
+  }
 }
 
+export async function fetchCourseData() {
+  try {
+    const dbRes: CourseFetch = await handleAPIDataPost("COURSE", "GET_ALL");
 
-export const meta = writable(metaData)
-export const context = writable(dataContext)
+    if (dbRes !== undefined) {
+      return dbRes;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchSlotData() {
+  try {
+    const dbRes: TimeSlotFetch = await handleAPIDataPost("SLOT", "GET_ALL");
+
+    if (dbRes !== undefined) {
+      return dbRes;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const meta = writable(metaData);
+export const context = writable(dataContext);
