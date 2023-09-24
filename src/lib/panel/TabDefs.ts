@@ -9,6 +9,7 @@ export type TabIndex = {
   event: TabDef[];
   uc: TabDef[];
   class: TabDef[];
+  student: TabDef[];
 };
 
 const eventManageGakunai: TabDef = {
@@ -51,21 +52,28 @@ export const classTextbook: TabDef = {
   tag: "教科書",
   icon: "ph:book-fill",
   isDefault: false,
-}
+};
 
 export const classCourse: TabDef = {
   text: "講座",
   tag: "講座",
   icon: "ph:chalkboard-teacher-fill",
   isDefault: false,
-}
+};
 
 export const classSchedule: TabDef = {
   text: "時刻表",
   tag: "時刻表",
   icon: "mdi:timetable",
-  isDefault: true
-}
+  isDefault: true,
+};
+
+export const initialStudent: TabDef = {
+  text: "申込承諾",
+  tag: "申込承諾",
+  icon: "mdi:stamper",
+  isDefault: true,
+};
 
 export const tabIndex: TabIndex = {
   event: [
@@ -75,9 +83,6 @@ export const tabIndex: TabIndex = {
     eventApplicantGakugai,
   ],
   uc: [underConstruction],
-  class: [
-    classSchedule,
-    classCourse,
-    classTextbook,
-  ]
+  class: [classSchedule, classCourse, classTextbook],
+  student: [initialStudent],
 };

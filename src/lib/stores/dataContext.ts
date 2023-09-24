@@ -15,6 +15,7 @@ export type DataContext = {
   textbooks: Textbook[] | null;
   courses: Course[] | null;
   timeslots: TimeSlot[] | null;
+  students: any
 };
 
 export type MetaData = {
@@ -30,6 +31,7 @@ const metaData: MetaData = {
 };
 
 const dataContext: DataContext = {
+  students: null,
   selectedCampus: null,
   selectedSemester: null,
   selectedYear: null,
@@ -83,6 +85,18 @@ export async function fetchCourseData() {
 export async function fetchSlotData() {
   try {
     const dbRes: TimeSlotFetch = await handleAPIDataPost("SLOT", "GET_ALL");
+
+    if (dbRes !== undefined) {
+      return dbRes;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchStudentData() {
+  try {
+    const dbRes: any = await handleAPIDataPost("STUDENT", "GET_ALL");
 
     if (dbRes !== undefined) {
       return dbRes;

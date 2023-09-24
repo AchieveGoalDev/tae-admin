@@ -1,9 +1,20 @@
 <script lang="ts">
-  import UnderConstruction from "$lib/placeholder/UnderConstruction.svelte";
+  import PanelInteriorWrapper from "$lib/panel/PanelInteriorWrapper.svelte";
+  import PanelSelector from "$lib/panel/PanelSelector.svelte";
+
+  import InitialStudent from "$lib/panel/student/InitialStudent.svelte";
+
+  import { initialStudent } from "$lib/panel/TabDefs";
+
+  const componentList = [
+    {
+      name: initialStudent.tag,
+      isDefaut: initialStudent.isDefault,
+      component: InitialStudent,
+    },
+  ];
 </script>
 
-<main
-  class="w-full h-full bg-neutral-light dark:bg-dark-ultradark dark:text-neutral-light"
->
-  <UnderConstruction />
-</main>
+<PanelInteriorWrapper>
+  <PanelSelector components={componentList} panelName={"student"} />
+</PanelInteriorWrapper>

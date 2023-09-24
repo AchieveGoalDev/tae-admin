@@ -14,6 +14,9 @@
       case "class":
         tabList = tabIndex.class;
         break;
+      case "student":
+        tabList = tabIndex.student;
+        break;
       default:
         tabList = tabIndex.uc;
     }
