@@ -8,6 +8,34 @@ type SemesterMetaData = {
   [key: string]: [string, string];
 };
 
+export type CampusObject = {
+  tag: string;
+  label: string;
+};
+
+export const campuses: CampusObject[] = [
+  {
+    tag: "HAKUSAN",
+    label: "白山",
+  },
+  {
+    tag: "KAWAGOE",
+    label: "川越",
+  },
+  {
+    tag: "ITAKURA",
+    label: "板倉",
+  },
+  {
+    tag: "WELLB",
+    label: "WELLB",
+  },
+  {
+    tag: "INIAD",
+    label: "INIAD",
+  },
+];
+
 export type DataContext = {
   selectedCampus: string | null;
   selectedSemester: string | null;
@@ -15,7 +43,7 @@ export type DataContext = {
   textbooks: Textbook[] | null;
   courses: Course[] | null;
   timeslots: TimeSlot[] | null;
-  students: any
+  students: any;
 };
 
 export type MetaData = {
@@ -39,6 +67,14 @@ const dataContext: DataContext = {
   courses: null,
   timeslots: null,
 };
+
+export function sortByCampus(campus: CampusObject, dataSet: any[]) {
+  const returnArray = dataSet.filter((item) => {
+    return item.campus === campus.tag;
+  });
+
+  return returnArray;
+}
 
 export async function fetchSemesterMetadata() {
   try {
@@ -101,6 +137,15 @@ export async function fetchStudentData() {
     if (dbRes !== undefined) {
       return dbRes;
     }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function updateSlotBatch(payload: any) {
+  try {
+    const dbRes: any = await handleAPIDataPost("SLOT", "BATCH_UPDATE", payload);
+    return dbRes;
   } catch (err) {
     console.log(err);
   }

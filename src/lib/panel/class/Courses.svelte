@@ -41,6 +41,7 @@
   }
 
   $: triggerRefresh = refreshCourseData(triggerRefresh);
+  $: console.log($context.courses);
   $: toSubmit = toSubmit;
   $: console.log(toSubmit);
 </script>

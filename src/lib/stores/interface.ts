@@ -42,7 +42,7 @@ const defaultState: InterfaceData = {
   tab: defaultTabs,
   page: "student",
   modal: "semester",
-  campus: "白山",
+  campus: "HAKUSAN",
 };
 
 export const interfaceState = writable(defaultState);
